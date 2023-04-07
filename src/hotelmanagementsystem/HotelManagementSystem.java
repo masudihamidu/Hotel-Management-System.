@@ -11,11 +11,18 @@ import javax.swing.JLabel;
  *
  * @author I.A.T COMPUTERS LLC
  */
-public class HotelManagementSystem {
+public class HotelManagementSystem extends JFrame{
 
     /**
      * @param args the command line arguments
      */
+    //constructor
+    HotelManagementSystem(){
+        JButton systemAdmin = new JButton("System admin");
+        JButton roomAssistant = new JButton("Room assistant");
+        
+    }
+    
     public static void main(String[] args) {
         // TODO code application logic here
     }
