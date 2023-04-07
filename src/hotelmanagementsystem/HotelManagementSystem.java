@@ -20,6 +20,12 @@ public class HotelManagementSystem extends JFrame{
     HotelManagementSystem(){
         JButton systemAdmin = new JButton("System admin");
         JButton roomAssistant = new JButton("Room assistant");
+        JLabel containerTitle = new JLabel("Hotel management System");
+        
+        add(systemAdmin);
+        add(roomAssistant);
+        add(containerTitle);
+        
         
     }
     
