@@ -22,9 +22,9 @@ public class HotelManagementSystem extends JFrame{
         JButton roomAssistant = new JButton("Room assistant");
         JLabel containerTitle = new JLabel("Hotel management System");
         
-        systemAdmin.setBounds(50,80,90,50);
-        roomAssistant.setBounds(50,150,90,50);
-        containerTitle.setBounds(50,20,90,50);
+        systemAdmin.setBounds(50,80,170,50);
+        roomAssistant.setBounds(50,150,170,50);
+        containerTitle.setBounds(50,20,200,50);
         
         add(systemAdmin);
         add(roomAssistant);
