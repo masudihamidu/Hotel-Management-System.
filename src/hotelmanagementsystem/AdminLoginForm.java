@@ -4,9 +4,8 @@
  * and open the template in the editor.
  */
 package hotelmanagementsystem;
-
 import javax.swing.JOptionPane;
-
+import javax.swing.ImageIcon;
 /**
  *
  * @author I.A.T COMPUTERS LLC
@@ -16,8 +15,12 @@ public class AdminLoginForm extends javax.swing.JFrame {
     /**
      * Creates new form AdminLoginForm
      */
+    ImageIcon AdminLogin = new ImageIcon("loginImage");
     public AdminLoginForm() {
         initComponents();
+        
+        this.setLocationRelativeTo(null);
+        
     }
 
     /**
