@@ -15,6 +15,7 @@ public class IndexPage extends javax.swing.JFrame {
     /** Creates new form IndexPage */
     public IndexPage() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /** This method is called from within the constructor to
@@ -41,6 +42,11 @@ public class IndexPage extends javax.swing.JFrame {
 
         jButton2.setText("Room assistance");
         jButton2.setActionCommand("RoomAssistance");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -75,6 +81,13 @@ public class IndexPage extends javax.swing.JFrame {
         adminLogin.show();
         hide();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        RoomAssistance roomAs = new RoomAssistance();
+        roomAs.show();
+        hide();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
