@@ -15,6 +15,7 @@ public class IndexPage extends javax.swing.JFrame {
     /** Creates new form IndexPage */
     public IndexPage() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /** This method is called from within the constructor to
@@ -41,6 +42,11 @@ public class IndexPage extends javax.swing.JFrame {
 
         jButton2.setText("Room assistance");
         jButton2.setActionCommand("RoomAssistance");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -56,11 +62,11 @@ public class IndexPage extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(93, Short.MAX_VALUE)
+                .addGap(60, 60, 60)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(37, 37, 37)
+                .addGap(44, 44, 44)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(42, 42, 42))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
 
         jButton1.getAccessibleContext().setAccessibleName("SystemAdmin");
@@ -75,6 +81,13 @@ public class IndexPage extends javax.swing.JFrame {
         adminLogin.show();
         hide();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        RoomAssistance roomAs = new RoomAssistance();
+        roomAs.show();
+        hide();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
