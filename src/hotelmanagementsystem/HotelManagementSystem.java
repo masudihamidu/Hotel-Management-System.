@@ -16,8 +16,8 @@ public class HotelManagementSystem {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        IndexPage frame = new IndexPage();
-        frame.show();
+        IndexPage indexpage = new IndexPage();
+        indexpage.show();
     }
     
 }

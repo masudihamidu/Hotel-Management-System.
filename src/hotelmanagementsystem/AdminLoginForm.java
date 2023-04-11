@@ -6,6 +6,7 @@
 package hotelmanagementsystem;
 import javax.swing.JOptionPane;
 import javax.swing.ImageIcon;
+import java.sql.*;
 //import javax.sql.*;
 /**
  *
@@ -19,9 +20,9 @@ public class AdminLoginForm extends javax.swing.JFrame {
     
     public AdminLoginForm() {
         initComponents();
-       
+      
        this.setLocationRelativeTo(null);
-        
+                     
     }
 
     /**
