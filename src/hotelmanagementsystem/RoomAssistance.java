@@ -152,7 +152,15 @@ public class RoomAssistance extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        JOptionPane.showMessageDialog(this,"Your successful login");
+        try{
+          String username = jTextField1.getText();
+        String password = jTextField2.getText();
+        JOptionPane.showMessageDialog(this,"Your successful login as " + username);  
+        }
+        catch(Exception e){
+             JOptionPane.showMessageDialog(this,e);
+        }
+        
         //hide();
     }//GEN-LAST:event_jButton1ActionPerformed
 
