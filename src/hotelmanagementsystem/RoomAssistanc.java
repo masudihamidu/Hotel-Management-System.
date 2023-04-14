@@ -9,7 +9,7 @@ package hotelmanagementsystem;
  *
  * @author I.A.T COMPUTERS LLC
  */
-public class RoomAssistanc {
+public class RoomAssistanc extends User {
     String firstName;
     String lastName;
     String gender;
