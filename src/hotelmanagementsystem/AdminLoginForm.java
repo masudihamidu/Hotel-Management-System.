@@ -128,11 +128,18 @@ public class AdminLoginForm extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         
-        String firstName = jTextField1.getText();
+        try{
+          String firstName = jTextField1.getText();
         String password = jTextField2.getText();
-        JOptionPane.showMessageDialog(this,"Successfully login " + firstName);
-        hide();
-       
+        JOptionPane.showMessageDialog(this,"Successfully login as " + firstName);
+        hide();  
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(this,e);
+        }
+        
+        IndexPage i = new IndexPage();
+        i.show();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
