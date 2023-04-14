@@ -6,10 +6,7 @@
 package hotelmanagementsystem;
 import javax.swing.JOptionPane;
 import javax.swing.ImageIcon;
-<<<<<<< HEAD
 import java.sql.*;
-=======
->>>>>>> main
 //import javax.sql.*;
 /**
  *
@@ -23,15 +20,9 @@ public class AdminLoginForm extends javax.swing.JFrame {
     
     public AdminLoginForm() {
         initComponents();
-<<<<<<< HEAD
       
        this.setLocationRelativeTo(null);
                      
-=======
-       
-       this.setLocationRelativeTo(null);
-        
->>>>>>> main
     }
 
     /**
@@ -136,9 +127,10 @@ public class AdminLoginForm extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        
         String firstName = jTextField1.getText();
         String password = jTextField2.getText();
-        JOptionPane.showMessageDialog(this,"Successfully login");
+        JOptionPane.showMessageDialog(this,"Successfully login " + firstName);
         hide();
        
     }//GEN-LAST:event_jButton1ActionPerformed
