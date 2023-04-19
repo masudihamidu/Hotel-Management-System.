@@ -174,9 +174,9 @@ public class RoomAssistance extends javax.swing.JFrame {
 
     private void lblRegisterPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_lblRegisterPropertyChange
         // TODO add your handling code here:
-//        hide();
-//        RoomAssistanceRegistration roomAssistance = new RoomAssistanceRegistration();
-//        roomAssistance.show();
+        hide();
+        RoomAssistanceRegistration roomAssistance = new RoomAssistanceRegistration();
+        roomAssistance.show();
     }//GEN-LAST:event_lblRegisterPropertyChange
 
     /**
