@@ -16,6 +16,7 @@ public class IndexPage extends javax.swing.JFrame {
     public IndexPage() {
         initComponents();
         this.setLocationRelativeTo(null);
+        this.setTitle("Index page");
     }
 
     /** This method is called from within the constructor to
