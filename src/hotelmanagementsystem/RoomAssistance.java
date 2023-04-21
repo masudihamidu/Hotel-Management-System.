@@ -153,10 +153,14 @@ public class RoomAssistance extends javax.swing.JFrame {
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         // TODO add your handling code here:
+        RoomAssistanceHomepage homepage = new RoomAssistanceHomepage();
         try{
           String username = txtUsername.getText();
         String password = txtPassword.getText();
-        JOptionPane.showMessageDialog(this,"Your successful login as " + username);  
+        JOptionPane.showMessageDialog(this,"Your successful login as " + username);
+        hide();
+        homepage.show();
+        
         }
         catch(Exception e){
              JOptionPane.showMessageDialog(this,e);
@@ -174,9 +178,9 @@ public class RoomAssistance extends javax.swing.JFrame {
 
     private void lblRegisterPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_lblRegisterPropertyChange
         // TODO add your handling code here:
-        hide();
-        RoomAssistanceRegistration roomAssistance = new RoomAssistanceRegistration();
-        roomAssistance.show();
+//        hide();
+//        RoomAssistanceRegistration roomAssistance = new RoomAssistanceRegistration();
+//        roomAssistance.show();
     }//GEN-LAST:event_lblRegisterPropertyChange
 
     /**
