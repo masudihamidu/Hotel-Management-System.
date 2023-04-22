@@ -18,6 +18,7 @@ public class RoomAssistance extends javax.swing.JFrame {
     public RoomAssistance() {
         initComponents();
         this.setLocationRelativeTo(null);
+        this.setTitle("Room assistance login form");
     }
 
     /**

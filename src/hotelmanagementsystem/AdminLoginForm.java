@@ -20,8 +20,8 @@ public class AdminLoginForm extends javax.swing.JFrame {
     
     public AdminLoginForm() {
         initComponents();
-      
        this.setLocationRelativeTo(null);
+       this.setTitle("Admin login form");
                      
     }
 
