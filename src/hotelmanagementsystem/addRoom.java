@@ -4,6 +4,8 @@
  * and open the template in the editor.
  */
 package hotelmanagementsystem;
+import java.sql.*;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -45,6 +47,11 @@ public class addRoom extends javax.swing.JFrame {
         jLabel2.setText("Room amount");
 
         btnAddRoom.setText("Add");
+        btnAddRoom.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddRoomActionPerformed(evt);
+            }
+        });
 
         btnCancel.setText("Cancel");
         btnCancel.addActionListener(new java.awt.event.ActionListener() {
@@ -113,6 +120,20 @@ public class addRoom extends javax.swing.JFrame {
         new AdminstratorDashboard().setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_btnCancelActionPerformed
+
+    private void btnAddRoomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddRoomActionPerformed
+        // TODO add your handling code here:
+        DBConnection conn = new DBConnection();
+        try{
+            int roomNumber = Integer.parseInt(txtRoomNumber.getText());
+            double roomAmount = Double.parseDouble(txtRoomAmount.getText());
+            
+              JOptionPane.showMessageDialog(null, roomNumber + " " + roomAmount);
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }//GEN-LAST:event_btnAddRoomActionPerformed
 
     /**
      * @param args the command line arguments
