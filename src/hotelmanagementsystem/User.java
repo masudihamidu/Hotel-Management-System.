@@ -4,32 +4,30 @@
  * and open the template in the editor.
  */
 package hotelmanagementsystem;
+
 /**
  *
  * @author I.A.T COMPUTERS LLC
  */
 public class User {
-    String username;
+    private String username;
     private String password;
     
-    void setPassword( String password){
+    User(){
+        
+    }
+    
+    User(String username, String password){
+        this.username = username;
         this.password = password;
+    }
+    
+    String getUsername(){
+        return username;
     }
     
     String getPassword(){
         return password;
-    }
-    
-    void cancel(){
-      
-    }
-    
-    void login(){
-        
-    }
-    
-    void logout(){
-        
     }
     
 }
