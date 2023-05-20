@@ -128,8 +128,6 @@ public class AdminstratorLoginForm extends javax.swing.JFrame {
         try{
             String username = txtUserName.getText();
             String password = new String(txtPassword.getPassword());
-//            preparedstatement = conn.prepareStatement("SELECT * FROM admin");
-//            result = preparedstatement.executeQuery();
             
             String sqlStatment = "SELECT * FROM admin";
             ResultSet result = conn.statment.executeQuery(sqlStatment);
