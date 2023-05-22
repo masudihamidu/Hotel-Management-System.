@@ -29,13 +29,20 @@ public class AdminstratorDashboard extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jButton1 = new javax.swing.JButton();
         menuBar = new javax.swing.JMenuBar();
         menuAddRoom = new javax.swing.JMenu();
         menuEditRoom = new javax.swing.JMenu();
         menuDeleteRoom = new javax.swing.JMenu();
-        jMenu1 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jButton1.setText("logout");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         menuAddRoom.setText("Add room");
         menuAddRoom.addActionListener(new java.awt.event.ActionListener() {
@@ -51,21 +58,22 @@ public class AdminstratorDashboard extends javax.swing.JFrame {
         menuDeleteRoom.setText("Delete room");
         menuBar.add(menuDeleteRoom);
 
-        jMenu1.setBackground(new java.awt.Color(255, 153, 153));
-        jMenu1.setText("Logout");
-        menuBar.add(jMenu1);
-
         setJMenuBar(menuBar);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 714, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(640, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 338, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jButton1)
+                .addGap(0, 313, Short.MAX_VALUE))
         );
 
         pack();
@@ -76,6 +84,12 @@ public class AdminstratorDashboard extends javax.swing.JFrame {
         new addRoom().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_menuAddRoomActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+        new AdminstratorLoginForm().setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -113,7 +127,7 @@ public class AdminstratorDashboard extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu jMenu1;
+    private javax.swing.JButton jButton1;
     private javax.swing.JMenu menuAddRoom;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenu menuDeleteRoom;

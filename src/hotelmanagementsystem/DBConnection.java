@@ -7,8 +7,8 @@ package hotelmanagementsystem;
 import java.sql.*;
 import javax.swing.JOptionPane;
 /**
- *
- * @author I.A.T COMPUTERS LLC
+ *r I.A.T COMPU
+ * @authoTERS LLC
  */
 
 
