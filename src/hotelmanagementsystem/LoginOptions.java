@@ -95,6 +95,8 @@ public class LoginOptions extends javax.swing.JFrame {
 
     private void btnRoomAssistanceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRoomAssistanceActionPerformed
         // TODO add your handling code here:
+        new RoomAssistanceLogin().setVisible(true);
+        setVisible(false);
     }//GEN-LAST:event_btnRoomAssistanceActionPerformed
 
     private void btnAdminstratorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdminstratorActionPerformed

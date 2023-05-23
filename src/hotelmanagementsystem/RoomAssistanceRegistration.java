@@ -65,9 +65,19 @@ public class RoomAssistanceRegistration extends javax.swing.JFrame {
         jLabel7.setText("Password");
 
         btnRegistry.setText("Registry");
+        btnRegistry.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistryActionPerformed(evt);
+            }
+        });
 
         btnCancel.setBackground(new java.awt.Color(255, 153, 153));
         btnCancel.setText("Cancel");
+        btnCancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -148,6 +158,17 @@ public class RoomAssistanceRegistration extends javax.swing.JFrame {
     private void txtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtEmailActionPerformed
+
+    private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
+        // TODO add your handling code here:
+        setVisible(false);
+        new RoomAssistanceLogin().setVisible(true);
+    }//GEN-LAST:event_btnCancelActionPerformed
+
+    private void btnRegistryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistryActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_btnRegistryActionPerformed
 
     /**
      * @param args the command line arguments
