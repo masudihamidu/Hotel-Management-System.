@@ -9,6 +9,7 @@
             <Property name="text" type="java.lang.String" value="Add room"/>
           </Properties>
           <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="menuAddRoomMouseClicked"/>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuAddRoomActionPerformed"/>
           </Events>
         </Menu>
@@ -21,6 +22,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Delete room"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="menuDeleteRoomMouseClicked"/>
+          </Events>
         </Menu>
       </SubComponents>
     </Menu>
