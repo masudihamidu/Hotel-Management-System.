@@ -45,6 +45,11 @@ public class AdminstratorDashboard extends javax.swing.JFrame {
         });
 
         menuAddRoom.setText("Add room");
+        menuAddRoom.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                menuAddRoomMouseClicked(evt);
+            }
+        });
         menuAddRoom.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuAddRoomActionPerformed(evt);
@@ -56,6 +61,11 @@ public class AdminstratorDashboard extends javax.swing.JFrame {
         menuBar.add(menuEditRoom);
 
         menuDeleteRoom.setText("Delete room");
+        menuDeleteRoom.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                menuDeleteRoomMouseClicked(evt);
+            }
+        });
         menuBar.add(menuDeleteRoom);
 
         setJMenuBar(menuBar);
@@ -90,6 +100,19 @@ public class AdminstratorDashboard extends javax.swing.JFrame {
         this.setVisible(false);
         new AdminstratorLoginForm().setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void menuAddRoomMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuAddRoomMouseClicked
+        // TODO add your handling code here:
+        new addRoom().setVisible(true);
+        setVisible(false);
+    }//GEN-LAST:event_menuAddRoomMouseClicked
+
+    private void menuDeleteRoomMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuDeleteRoomMouseClicked
+        // TODO add your handling code here:
+       new DeleteRoom().setVisible(true);
+       this.setVisible(false);
+       
+    }//GEN-LAST:event_menuDeleteRoomMouseClicked
 
     /**
      * @param args the command line arguments

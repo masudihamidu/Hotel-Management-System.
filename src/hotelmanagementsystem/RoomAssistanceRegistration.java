@@ -4,11 +4,50 @@
  * and open the template in the editor.
  */
 package hotelmanagementsystem;
+import java.awt.HeadlessException;
+import java.sql.*;
+import javax.swing.JOptionPane;
 
-/**
- *
- * @author I.A.T COMPUTERS LLC
- */
+class Registration extends User{
+    private String lastName;
+    private String registrationNumber;
+    private String email;
+    
+    Registration(){
+        
+    }
+    Registration(String lastName, String registrationNumber,String email){
+        this.lastName = lastName;
+        this.registrationNumber = registrationNumber;
+        this.email = email;
+    }
+    
+    public String getLastName(){
+        return lastName;
+    }
+    
+    public void setLastName(String lastName){
+        this.lastName = lastName;
+    }
+    
+    public String getRegistrationNumber(){
+        return registrationNumber;
+    }
+    
+    public void setRegistrationNumber(String registrationNumber){
+        this.registrationNumber = registrationNumber;
+        
+    }
+    
+    public String getEmail(){
+        return registrationNumber;
+    }
+    
+    public void setEmail(String email){
+        this.email = email;
+    }
+    
+}
 public class RoomAssistanceRegistration extends javax.swing.JFrame {
 
     /**
@@ -167,7 +206,26 @@ public class RoomAssistanceRegistration extends javax.swing.JFrame {
 
     private void btnRegistryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistryActionPerformed
         // TODO add your handling code here:
+        DBConnection conn = new DBConnection();
+        Registration registration = new Registration();
         
+        try{
+            String firstName = txtFirstName.getText();
+            String lastName = txtLastName.getText();
+            String registrationNumber = txtRegistrationNumber.getText();
+            String email = txtEmail.getText();
+            String password = txtPassword.getText();
+            
+            String insertStatement = "INSERT INTO roomAssistance VALUES("+firstName+"','"+lastName+"','"+registrationNumber+"','"+email+"','"+password+"')";
+//           int rows =  conn.statment.executeUpdate(insertStatement);
+//            PreparedStatement ps = conn.statment.
+           
+            
+            JOptionPane.showMessageDialog(null, "Data inserted successful");
+        }catch(HeadlessException e){
+            JOptionPane.showMessageDialog(null, e);
+        }
+       
     }//GEN-LAST:event_btnRegistryActionPerformed
 
     /**

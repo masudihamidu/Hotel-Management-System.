@@ -17,6 +17,7 @@ public class RoomAssistanceLogin extends javax.swing.JFrame {
     public RoomAssistanceLogin() {
         initComponents();
         this.setLocationRelativeTo(null);
+        
     }
 
     /**
@@ -155,6 +156,8 @@ public class RoomAssistanceLogin extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        new RoomAssistanceDashboard().setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
