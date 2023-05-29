@@ -61,6 +61,7 @@ public class RoomAssistanceRegistration extends javax.swing.JFrame {
         setTitle("Room assistance registration");
         setLocationRelativeTo(null);
         
+        
     }
 
     /**
@@ -212,29 +213,18 @@ public class RoomAssistanceRegistration extends javax.swing.JFrame {
         // TODO add your handling code here:
       DBConnection conn = new DBConnection();
         
-        try{
-            String firstName = txtFirstName.getText();
-            String lastName = txtLastName.getText();
-            String registrationNumber = txtRegistrationNumber.getText();
-            String email = txtEmail.getText();
-            String password = txtPassword.getText();
-            
-            String insertStatement = "INSERT INTO roomAssistance(firstname,lastname,registrationNumber,email,password) VALUES(?,?,?,?,?)";
-            conn.statment(insertStatement);
-            
-             conn.statment("INSERT INTO roomassistance(firstname,lastname,registrationNumber,email,password) VALUES(?,?,?,?,?)");
-            pst.setString(1, txtFirstName.getText());
-            pst.setString(2, txtLastName.getText());
-            pst.setString(3, txtRegistrationNumber.getText());
-            pst.setString(4, txtEmail.getText());
-            pst.setString(5, txtPassword.getText());
-            pst.executeUpdate();
-
-           
-            
-            JOptionPane.showMessageDialog(null, "Data inserted successful");
+        try{            
+            boolean b = conn.statment.execute("INSERT INTO roomassistance(firstanme,lastname,registrationNumber,email,password) VALUES('"+txtFirstName.getText()+"','"+txtLastName.getText()+"','"+txtRegistrationNumber.getText()+"', '"+txtEmail.getText()+"','"+txtPassword.getText()+"')");
+            if(!b){
+                JOptionPane.showMessageDialog(null, "Data inserted successful");
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "Error");
+            }
         }catch(HeadlessException e){
             JOptionPane.showMessageDialog(null, e);
+        } catch (SQLException ex) {
+            Logger.getLogger(RoomAssistanceRegistration.class.getName()).log(Level.SEVERE, null, ex);
         }
        
     }//GEN-LAST:event_btnRegistryActionPerformed
