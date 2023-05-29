@@ -132,8 +132,7 @@ public class AdminstratorLoginForm extends javax.swing.JFrame {
                 String uname = result.getString("username");
                 String pwd = result.getString("password");
                 
-                if((username.equals(uname)) && (password.equals(pwd))){
-//                  JOptionPane.showMessageDialog(null, "Succesful login");  
+                if((username.equals(uname)) && (password.equals(pwd))){  
                   new AdminstratorDashboard().setVisible(true);
                   this.setVisible(false);
                 }
