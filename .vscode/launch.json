@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "GuestDetails",
+            "request": "launch",
+            "mainClass": "hotelmanagementsystem.GuestDetails",
+            "projectName": "HotelManagement_899a210"
+        },
+        {
+            "type": "java",
             "name": "Current File",
             "request": "launch",
             "mainClass": "${file}"

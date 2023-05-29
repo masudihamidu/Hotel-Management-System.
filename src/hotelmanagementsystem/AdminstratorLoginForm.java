@@ -133,7 +133,7 @@ public class AdminstratorLoginForm extends javax.swing.JFrame {
                 String pwd = result.getString("password");
                 
                 if((username.equals(uname)) && (password.equals(pwd))){
-                  JOptionPane.showMessageDialog(null, "Succesful login");  
+//                  JOptionPane.showMessageDialog(null, "Succesful login");  
                   new AdminstratorDashboard().setVisible(true);
                   this.setVisible(false);
                 }
@@ -141,6 +141,7 @@ public class AdminstratorLoginForm extends javax.swing.JFrame {
                 {
                     JOptionPane.showMessageDialog(null, "Username and password does not match");
                 }   
+                
             }         
         }
         catch(Exception e){
