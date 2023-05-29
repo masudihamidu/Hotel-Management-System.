@@ -5,6 +5,9 @@
  */
 package hotelmanagementsystem;
 
+import java.sql.ResultSet;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author I.A.T COMPUTERS LLC
@@ -33,7 +36,7 @@ public class RoomAssistanceLogin extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        txtUsername = new javax.swing.JTextField();
+        txtUserName = new javax.swing.JTextField();
         txtPassword = new javax.swing.JPasswordField();
         jButton1 = new javax.swing.JButton();
         btnCancel = new javax.swing.JButton();
@@ -110,7 +113,7 @@ public class RoomAssistanceLogin extends javax.swing.JFrame {
                                         .addComponent(jLabel4))
                                     .addGap(25, 25, 25)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(txtUsername)
+                                        .addComponent(txtUserName)
                                         .addComponent(txtPassword, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)))
                                 .addComponent(btnCancel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                 .addContainerGap(59, Short.MAX_VALUE))
@@ -125,7 +128,7 @@ public class RoomAssistanceLogin extends javax.swing.JFrame {
                 .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtUserName, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(38, 38, 38)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
@@ -156,8 +159,32 @@ public class RoomAssistanceLogin extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        new RoomAssistanceDashboard().setVisible(true);
-        this.setVisible(false);
+        DBConnection conn = new DBConnection();
+        
+          try{
+            String username = txtUserName.getText();
+            String password = new String(txtPassword.getPassword());
+                       
+            String sqlStatment = "SELECT firstanme, password FROM roomassistance";
+            ResultSet result = conn.statment.executeQuery(sqlStatment);
+            while(result.next()){
+                String uname = result.getString("firstanme");
+                String pwd = result.getString("password");
+                
+                if((username.equals(uname)) && (password.equals(pwd))){  
+                  new RoomAssistanceDashboard().setVisible(true);                 
+                  this.setVisible(false);
+                }
+                else
+                {
+                    JOptionPane.showMessageDialog(null, "Username and password does not match");
+                }   
+                
+            }         
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null, e);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
@@ -211,6 +238,6 @@ public class RoomAssistanceLogin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPasswordField txtPassword;
-    private javax.swing.JTextField txtUsername;
+    private javax.swing.JTextField txtUserName;
     // End of variables declaration//GEN-END:variables
 }
