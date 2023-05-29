@@ -6,6 +6,8 @@
 package hotelmanagementsystem;
 import java.awt.HeadlessException;
 import java.sql.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 class Registration extends User{
@@ -53,10 +55,12 @@ public class RoomAssistanceRegistration extends javax.swing.JFrame {
     /**
      * Creates new form RoomAssistanceRegistration
      */
+    
     public RoomAssistanceRegistration() {
         initComponents();
-        this.setTitle("Room assistance registration");
-        this.setLocationRelativeTo(null);
+        setTitle("Room assistance registration");
+        setLocationRelativeTo(null);
+        
     }
 
     /**
@@ -206,8 +210,7 @@ public class RoomAssistanceRegistration extends javax.swing.JFrame {
 
     private void btnRegistryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistryActionPerformed
         // TODO add your handling code here:
-        DBConnection conn = new DBConnection();
-        Registration registration = new Registration();
+      DBConnection conn = new DBConnection();
         
         try{
             String firstName = txtFirstName.getText();
@@ -216,9 +219,17 @@ public class RoomAssistanceRegistration extends javax.swing.JFrame {
             String email = txtEmail.getText();
             String password = txtPassword.getText();
             
-            String insertStatement = "INSERT INTO roomAssistance VALUES("+firstName+"','"+lastName+"','"+registrationNumber+"','"+email+"','"+password+"')";
-//           int rows =  conn.statment.executeUpdate(insertStatement);
-//            PreparedStatement ps = conn.statment.
+            String insertStatement = "INSERT INTO roomAssistance(firstname,lastname,registrationNumber,email,password) VALUES(?,?,?,?,?)";
+            conn.statment(insertStatement);
+            
+             conn.statment("INSERT INTO roomassistance(firstname,lastname,registrationNumber,email,password) VALUES(?,?,?,?,?)");
+            pst.setString(1, txtFirstName.getText());
+            pst.setString(2, txtLastName.getText());
+            pst.setString(3, txtRegistrationNumber.getText());
+            pst.setString(4, txtEmail.getText());
+            pst.setString(5, txtPassword.getText());
+            pst.executeUpdate();
+
            
             
             JOptionPane.showMessageDialog(null, "Data inserted successful");
