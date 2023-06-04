@@ -18,8 +18,8 @@ public class addRoom extends javax.swing.JFrame {
      */
     public addRoom() {
         initComponents();
-        this.setTitle("Add room");
-        this.setLocationRelativeTo(null);
+        setTitle("Add room");
+        setLocationRelativeTo(null);
         this.setTitle("Add room details form");
     }
 
@@ -118,11 +118,15 @@ public class addRoom extends javax.swing.JFrame {
         // TODO add your handling code here:
         DBConnection conn = new DBConnection();
         try{
-            int room_Number = Integer.parseInt(txtRoomNumber.getText());
-            double room_Amount = Double.parseDouble(txtRoomAmount.getText());
-            String insertStatement = "INSERT INTO room(roomNumber,roomAmount) VALUES (?,?)";
-            conn.statment.executeUpdate(insertStatement);         
-                        
+            boolean b = conn.statment.execute("INSERT INTO room(room_number,room_amount) VALUES ('"+txtRoomNumber.getText()+"','"+txtRoomAmount.getText()+"')");
+            if(!b){
+                JOptionPane.showMessageDialog(null, "Data inserted successful");
+                this.setVisible(false);
+                new RoomAssistanceLogin().setVisible(true);
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "Error");
+            }                       
         }
         catch(Exception e){
             JOptionPane.showMessageDialog(null, e);
@@ -158,6 +162,7 @@ public class addRoom extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new addRoom().setVisible(true);
             }
