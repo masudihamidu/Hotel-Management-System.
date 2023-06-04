@@ -217,6 +217,8 @@ public class RoomAssistanceRegistration extends javax.swing.JFrame {
             boolean b = conn.statment.execute("INSERT INTO roomassistance(firstanme,lastname,registrationNumber,email,password) VALUES('"+txtFirstName.getText()+"','"+txtLastName.getText()+"','"+txtRegistrationNumber.getText()+"', '"+txtEmail.getText()+"','"+txtPassword.getText()+"')");
             if(!b){
                 JOptionPane.showMessageDialog(null, "Data inserted successful");
+                this.setVisible(false);
+                new RoomAssistanceLogin().setVisible(true);
             }
             else{
                 JOptionPane.showMessageDialog(null, "Error");
@@ -226,7 +228,7 @@ public class RoomAssistanceRegistration extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(RoomAssistanceRegistration.class.getName()).log(Level.SEVERE, null, ex);
         }
-       
+               
     }//GEN-LAST:event_btnRegistryActionPerformed
 
     /**
