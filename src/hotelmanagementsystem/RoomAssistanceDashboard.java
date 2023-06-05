@@ -68,7 +68,7 @@ public class RoomAssistanceDashboard extends javax.swing.JFrame {
 
     private void lblMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMenuMouseClicked
         // TODO add your handling code here:
-        new GuestDetails().setVisible(true);
+       // new GuestDetails().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_lblMenuMouseClicked
 
