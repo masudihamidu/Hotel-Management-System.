@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package hotelmanagementsystem;
+import java.awt.HeadlessException;
 import java.sql.*;
 import javax.swing.JOptionPane;
 
@@ -118,8 +119,8 @@ public class addRoom extends javax.swing.JFrame {
         // TODO add your handling code here:
         DBConnection conn = new DBConnection();
         try{
-            boolean b = conn.statment.execute("INSERT INTO room(room_number,room_amount) VALUES ('"+txtRoomNumber.getText()+"','"+txtRoomAmount.getText()+"')");
-            if(!b){
+            boolean sqlQuery = conn.statment.execute("INSERT INTO room(room_number,room_amount) VALUES ('"+txtRoomNumber.getText()+"','"+txtRoomAmount.getText()+"')");
+            if(!sqlQuery){
                 JOptionPane.showMessageDialog(null, "Data inserted successful");
                 this.setVisible(false);
                 new RoomAssistanceLogin().setVisible(true);
@@ -128,7 +129,7 @@ public class addRoom extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Error");
             }                       
         }
-        catch(Exception e){
+        catch(HeadlessException | SQLException e){
             JOptionPane.showMessageDialog(null, e);
         }
     }//GEN-LAST:event_btnAddRoomActionPerformed
