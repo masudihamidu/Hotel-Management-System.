@@ -20,10 +20,9 @@ public class DBConnection {
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
             conn = DriverManager.getConnection("jdbc:mysql://localhost/hotel_management_system","leocardia","shugi");
-            statment = conn.createStatement();
-                    
+            statment = conn.createStatement();                    
         }
-        catch(Exception e){
+        catch(ClassNotFoundException | SQLException e){
             JOptionPane.showMessageDialog(null, e);
         }
     }
