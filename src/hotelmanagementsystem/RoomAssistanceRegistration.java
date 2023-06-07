@@ -14,7 +14,7 @@ class Registration extends User{
     private String lastName;
     private String registrationNumber;
     private String email;
-    
+        
     Registration(){
         
     }
@@ -212,9 +212,15 @@ public class RoomAssistanceRegistration extends javax.swing.JFrame {
     private void btnRegistryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistryActionPerformed
         // TODO add your handling code here:
       DBConnection conn = new DBConnection();
+      Registration registrationDetails = new Registration();
+      registrationDetails.setUsername(txtFirstName.getText());
+      registrationDetails.setLastName(txtLastName.getText());
+      registrationDetails.setRegistrationNumber(txtRegistrationNumber.getText());
+      registrationDetails.setEmail(txtEmail.getText());
+      registrationDetails.setPassword(txtPassword.getText());      
         
         try{            
-            boolean b = conn.statment.execute("INSERT INTO roomassistance(firstanme,lastname,registrationNumber,email,password) VALUES('"+txtFirstName.getText()+"','"+txtLastName.getText()+"','"+txtRegistrationNumber.getText()+"', '"+txtEmail.getText()+"','"+txtPassword.getText()+"')");
+            boolean b = conn.statment.execute("INSERT INTO roomassistance(firstanme,lastname,registrationNumber,email,password) VALUES('"+registrationDetails.getUsername()+"','"+registrationDetails.getLastName()+"','"+registrationDetails.getRegistrationNumber()+"', '"+registrationDetails.getEmail()+"','"+registrationDetails.getPassword()+"')");
             if(!b){
                 JOptionPane.showMessageDialog(null, "Data inserted successful");
                 this.setVisible(false);
