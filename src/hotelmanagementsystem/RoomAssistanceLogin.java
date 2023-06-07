@@ -167,7 +167,7 @@ public class RoomAssistanceLogin extends javax.swing.JFrame {
                        
             String sqlStatment = "SELECT firstanme, password FROM roomassistance";
             ResultSet result = conn.statment.executeQuery(sqlStatment);
-            while(result.next()){
+            if(result.next()){
                 String uname = result.getString("firstanme");
                 String pwd = result.getString("password");
                 

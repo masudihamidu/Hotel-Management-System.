@@ -11,9 +11,7 @@ import javax.swing.JOptionPane;
  *
  * @author I.A.T COMPUTERS LLC
  */
-
 public class AdminstratorLoginForm extends javax.swing.JFrame {
-
     /**
      * Creates new form AdminstratorLoginForm
      */
@@ -120,13 +118,13 @@ public class AdminstratorLoginForm extends javax.swing.JFrame {
         // TODO add your handling code here:
         
         DBConnection conn = new DBConnection();    
-        User c = new User();
+        User user = new User();
         try{
             String username = txtUserName.getText();
             String password = new String(txtPassword.getPassword());
-            c.setUsername(username);
-            c.setPassword(password);
-            
+            user.setUsername(txtUserName.getText());
+            user.setPassword(String.valueOf(txtPassword.getPassword()));
+                        
             String sqlStatment = "SELECT * FROM admin";
             ResultSet result = conn.statment.executeQuery(sqlStatment);
             if(result.next()){
