@@ -31,22 +31,22 @@ class Registration extends User{
     public void setLastName(String lastName){
         this.lastName = lastName;
     }
-    
-    public String getRegistrationNumber(){
-        return registrationNumber;
-    }
-    
+       
     public void setRegistrationNumber(String registrationNumber){
         this.registrationNumber = registrationNumber;
         
     }
     
-    public String getEmail(){
+    public String getRegistrationNumber(){
         return registrationNumber;
     }
     
     public void setEmail(String email){
         this.email = email;
+    }
+    
+    public String getEmail(){
+        return email;
     }
     
 }

@@ -4,11 +4,51 @@
  * and open the template in the editor.
  */
 package hotelmanagementsystem;
+import java.sql.*;
+import java.util.Date;
 
 /**
  *
  * @author I.A.T COMPUTERS LLC
  */
+
+class GuestDetails extends User{
+    private String nationality;
+    private Date check_in_date;
+    private Date check_out_date;
+    
+    GuestDetails(){
+        
+    }
+    
+    public void setNationality(String nationality){
+        this.nationality = nationality;
+    }
+    
+    public String getNationality(){
+        return nationality;
+    }
+    
+    public void setCheck_in_date(Date check_in_date){
+        this.check_in_date = check_in_date;
+    }
+    
+    public Date getCheck_in_date(){
+        return check_in_date;
+    }
+    
+    public void setCheck_out_date(Date check_out_date){
+        this.check_out_date = check_out_date;
+    }
+    
+    public Date getCheck_out_date(){
+        return check_out_date;
+    }
+    
+    
+           
+        
+}
 public class Guest extends javax.swing.JFrame {
 
     /**
