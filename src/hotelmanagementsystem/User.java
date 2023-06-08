@@ -4,7 +4,8 @@
  * and open the template in the editor.
  */
 package hotelmanagementsystem;
-
+import javax.swing.JOptionPane;
+import java.sql.ResultSet;
 /**
  *
  * @author I.A.T COMPUTERS LLC
@@ -61,4 +62,37 @@ public class User {
     public String getId(){
         return id;
     }
+    
+//    login method
+//    public boolean login(String username, String password, String sqlStatement){
+//        DBConnection conn = new DBConnection();
+//        String sqlQuery = null;
+//        sqlStatement = sqlQuery;
+//        this.username = username;
+//        this.password = password;
+//        
+//        try{
+//            ResultSet result = conn.statment.executeQuery(sqlStatement);
+//            if(result.next()){
+//                String uname = result.getString("firstanme");
+//                String pwd = result.getString("password");
+//                
+//                if((this.username.equals(uname)) && (this.password.equals(pwd))){  
+//                  new RoomAssistanceDashboard().setVisible(true); 
+//                  return true;
+//                }
+//                else
+//                {
+//                    JOptionPane.showMessageDialog(null, "Username and password does not match");
+//                    return false;
+//                }   
+//                
+//            } 
+//            
+//        }catch(Exception e){
+//            JOptionPane.showMessageDialog(null, e);
+//        }
+//            
+//        
+//    }
 }
