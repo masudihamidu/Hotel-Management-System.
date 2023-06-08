@@ -25,8 +25,5 @@ public class DBConnection {
         catch(ClassNotFoundException | SQLException e){
             JOptionPane.showMessageDialog(null, e);
         }
-    }
-    
-    
-    
+    }   
 }

@@ -12,6 +12,8 @@ package hotelmanagementsystem;
 public class User {
     private String username;
     private String password;
+    private String gender;
+    private String id;
     
     User(){
         
@@ -23,7 +25,7 @@ public class User {
     }
     
 //    parameter to set useraname
-    void setUsername(String username){
+  public void setUsername(String username){
         this.username = username;
     }
     
@@ -42,5 +44,21 @@ public class User {
         return password;
     }
     
+    public void setGender(String gender){
+        this.gender = gender;
+    }
+
+//return gender    
+    public String getGender(){
+        return gender;
+    }
     
+    public void setId(String id){
+        this.id = id;
+    }
+    
+//    return id
+    public String getId(){
+        return id;
+    }
 }
