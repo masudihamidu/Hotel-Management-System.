@@ -10,46 +10,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
-class Registration extends User{
-    private String lastName;
-    private String registrationNumber;
-    private String email;
-        
-    Registration(){
-        
-    }
-    Registration(String lastName, String registrationNumber,String email){
-        this.lastName = lastName;
-        this.registrationNumber = registrationNumber;
-        this.email = email;
-    }
-    
-    public String getLastName(){
-        return lastName;
-    }
-    
-    public void setLastName(String lastName){
-        this.lastName = lastName;
-    }
-       
-    public void setRegistrationNumber(String registrationNumber){
-        this.registrationNumber = registrationNumber;
-        
-    }
-    
-    public String getRegistrationNumber(){
-        return registrationNumber;
-    }
-    
-    public void setEmail(String email){
-        this.email = email;
-    }
-    
-    public String getEmail(){
-        return email;
-    }
-    
-}
 public class RoomAssistanceRegistration extends javax.swing.JFrame {
 
     /**
