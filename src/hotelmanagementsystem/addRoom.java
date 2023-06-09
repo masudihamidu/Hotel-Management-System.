@@ -138,11 +138,11 @@ public class addRoom extends javax.swing.JFrame {
         DBConnection conn = new DBConnection();
         Room room = new Room();
         room.setRoomAmount(Double.parseDouble(txtRoomAmount.getText()));
-        room.roomNumber = Integer.parseInt(txtRoomNumber.getText());
-        room.roomType = (String) cmbRoomType.getSelectedItem();
+        room.setRoomNumber(Integer.parseInt(txtRoomNumber.getText()));
+        room.setRoomType((String) cmbRoomType.getSelectedItem());
         
         try{
-            boolean sqlQuery = conn.statment.execute("INSERT INTO room(roomNumber,room_amount,roomType) VALUES ('"+room.roomNumber+"','"+room.getRoomAmount()+"', '"+room.roomType+"')");
+            boolean sqlQuery = conn.statment.execute("INSERT INTO room(roomNumber,room_amount,roomType) VALUES ('"+room.getRoomNumber()+"','"+room.getRoomAmount()+"', '"+room.getRoomType()+"')");
             if(!sqlQuery){
                 JOptionPane.showMessageDialog(null, "Data inserted successful");
                
