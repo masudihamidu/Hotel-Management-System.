@@ -12,7 +12,7 @@ import java.util.Date;
  * @author I.A.T COMPUTERS LLC
  */
 
-class GuestDetails extends User{
+class GuestDetails extends Registration{
     private String nationality;
     private Date check_in_date;
     private Date check_out_date;

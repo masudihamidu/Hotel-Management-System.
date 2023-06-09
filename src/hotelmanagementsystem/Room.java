@@ -10,5 +10,19 @@ package hotelmanagementsystem;
  * @author I.A.T COMPUTERS LLC
  */
 public class Room {
+    int roomNumber;
+    String roomType;
+    private Double roomAmount;
     
+    Room(){
+        
+    }
+    
+    public void setRoomAmount(Double roomAmount){
+        this.roomAmount = roomAmount;
+    }
+    
+    public Double getRoomAmount(){
+        return roomAmount;
+    }
 }
