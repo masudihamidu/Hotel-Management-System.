@@ -4,12 +4,14 @@
  * and open the template in the editor.
  */
 package hotelmanagementsystem;
+import java.awt.HeadlessException;
 import java.sql.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -20,6 +22,9 @@ class GuestDetails extends Registration implements roomInterface{
     private String nationality;
     private Date check_in_date;
     private Date check_out_date;
+    private int roomNumber;
+    private Double roomAmount;
+    private String roomType;
     
     GuestDetails(){
         
@@ -51,32 +56,38 @@ class GuestDetails extends Registration implements roomInterface{
 
     @Override
     public void setRoomNumber(int roomNumber) {
+        this.roomNumber = roomNumber;
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public int getRoomNumber() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return roomNumber;
+        
     }
 
     @Override
     public void setRoomAmount(Double roomAmount) {
+        this.roomAmount = roomAmount;
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public Double getRoomAmount() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return roomAmount;
+        
     }
 
     @Override
     public void setRoomType(String roomType) {
+        this.roomType = roomType;
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public String getRoomType() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return roomType;
+        
     }
         
 }
@@ -322,6 +333,8 @@ public class Guest extends javax.swing.JFrame {
         guestDetails.setEmail(txtEmail.getText());
         guestDetails.setGender((String)cmbGender.getSelectedItem());
         guestDetails.setPhoneNumber(txtPhoneNumber.getText());
+        guestDetails.setRoomNumber(Integer.parseInt((String) cmbRoomNumber.getSelectedItem()));
+        guestDetails.setRoomType((String)cmbRoomType.getSelectedItem());
         try {
             guestDetails.setCheck_in_date(sdf.parse(txtCheckInDate.getText()));
             guestDetails.setCheck_out_date(sdf.parse(txtCheckOutDate.getText()));
@@ -329,6 +342,20 @@ public class Guest extends javax.swing.JFrame {
             Logger.getLogger(Guest.class.getName()).log(Level.SEVERE, null, ex);
         }
         
+        try{            
+            boolean b = conn.statment.execute("INSERT INTO guest VALUES('"+guestDetails.getUsername()+"','"+guestDetails.getLastName()+"','"+guestDetails.getId()+"', '"+guestDetails.getNationality()+"','"+guestDetails.getPhoneNumber()+"','"+guestDetails.getEmail() +"','"+guestDetails.getGender()+"','"+guestDetails.getRoomNumber()+"','"+guestDetails.getRoomType()+"','"+guestDetails.getCheck_in_date()+"','"+guestDetails.getCheck_out_date()+"')");
+            if(!b){
+                JOptionPane.showMessageDialog(null, "Data inserted successful");
+                
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "Error");
+            }
+        }catch(HeadlessException e){
+            JOptionPane.showMessageDialog(null, e);
+        } catch (SQLException ex) {
+            Logger.getLogger(Guest.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
         
         

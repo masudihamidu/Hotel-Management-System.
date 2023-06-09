@@ -9,7 +9,7 @@ package hotelmanagementsystem;
  *
  * @author I.A.T COMPUTERS LLC
  */
-public class Registration extends User{
+public class Registration extends User {
     private String lastName;
     private String registrationNumber;
     private String email;
