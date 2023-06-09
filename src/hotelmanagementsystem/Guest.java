@@ -5,14 +5,18 @@
  */
 package hotelmanagementsystem;
 import java.sql.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author I.A.T COMPUTERS LLC
  */
 
-class GuestDetails extends Registration{
+class GuestDetails extends Registration implements roomInterface{
     private String nationality;
     private Date check_in_date;
     private Date check_out_date;
@@ -43,10 +47,37 @@ class GuestDetails extends Registration{
     
     public Date getCheck_out_date(){
         return check_out_date;
+    }           
+
+    @Override
+    public void setRoomNumber(int roomNumber) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
-    
-           
+
+    @Override
+    public int getRoomNumber() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void setRoomAmount(Double roomAmount) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public Double getRoomAmount() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void setRoomType(String roomType) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public String getRoomType() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
         
 }
 public class Guest extends javax.swing.JFrame {
@@ -58,6 +89,8 @@ public class Guest extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         this.setTitle("Guest details");
+        cmbGender.addItem("male");
+        cmbGender.addItem("female");
     }
 
     /**
@@ -97,6 +130,7 @@ public class Guest extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jLabel1.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jLabel1.setText("Guest details");
 
         jLabel2.setText("Firstname");
@@ -125,21 +159,21 @@ public class Guest extends javax.swing.JFrame {
             }
         });
 
-        cmbGender.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cmbGender.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbGenderActionPerformed(evt);
             }
         });
 
-        cmbRoomNumber.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        cmbRoomType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         jLabel12.setText("Check-out-date");
 
         btnAdd.setBackground(new java.awt.Color(51, 255, 51));
         btnAdd.setText("Add");
+        btnAdd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddActionPerformed(evt);
+            }
+        });
 
         btnCancel.setBackground(new java.awt.Color(255, 51, 51));
         btnCancel.setText("Cancel");
@@ -275,6 +309,30 @@ public class Guest extends javax.swing.JFrame {
     private void cmbGenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbGenderActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cmbGenderActionPerformed
+
+    private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
+        // TODO add your handling code here:
+        DBConnection conn = new DBConnection();
+        GuestDetails guestDetails = new GuestDetails();
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+        guestDetails.setUsername(txtFirstName.getText());
+        guestDetails.setLastName(txtLastName.getText());
+        guestDetails.setId(txtNida.getText());
+        guestDetails.setNationality(txtNationality.getText());
+        guestDetails.setEmail(txtEmail.getText());
+        guestDetails.setGender((String)cmbGender.getSelectedItem());
+        guestDetails.setPhoneNumber(txtPhoneNumber.getText());
+        try {
+            guestDetails.setCheck_in_date(sdf.parse(txtCheckInDate.getText()));
+            guestDetails.setCheck_out_date(sdf.parse(txtCheckOutDate.getText()));
+        } catch (ParseException ex) {
+            Logger.getLogger(Guest.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+        
+        
+    }//GEN-LAST:event_btnAddActionPerformed
 
     /**
      * @param args the command line arguments
