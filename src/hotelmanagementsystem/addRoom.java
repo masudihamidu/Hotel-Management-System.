@@ -22,6 +22,9 @@ public class addRoom extends javax.swing.JFrame {
         setTitle("Add room");
         setLocationRelativeTo(null);
         this.setTitle("Add room details form");
+        cmbRoomType.addItem("Single");
+         cmbRoomType.addItem("Double");
+       
     }
 
     /**
@@ -40,6 +43,8 @@ public class addRoom extends javax.swing.JFrame {
         btnAddRoom = new javax.swing.JButton();
         btnCancel = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
+        cmbRoomType = new javax.swing.JComboBox<>();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -64,6 +69,14 @@ public class addRoom extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel3.setText("Add room details:");
 
+        cmbRoomType.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbRoomTypeActionPerformed(evt);
+            }
+        });
+
+        jLabel4.setText("room type");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -73,15 +86,17 @@ public class addRoom extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAddRoom, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2))
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel4))
                         .addGap(46, 46, 46)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(cmbRoomType, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(txtRoomAmount, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE)
-                            .addComponent(txtRoomNumber)))
-                    .addComponent(btnAddRoom, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtRoomNumber))))
                 .addContainerGap(48, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -99,11 +114,15 @@ public class addRoom extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtRoomAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
-                .addGap(30, 30, 30)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cmbRoomType, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
+                    .addComponent(jLabel4))
+                .addGap(18, 18, 18)
                 .addComponent(btnAddRoom, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(35, Short.MAX_VALUE))
+                .addGap(44, 44, 44))
         );
 
         pack();
@@ -111,28 +130,35 @@ public class addRoom extends javax.swing.JFrame {
 
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
         // TODO add your handling code here:
-        new AdminstratorDashboard().setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_btnCancelActionPerformed
 
     private void btnAddRoomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddRoomActionPerformed
         // TODO add your handling code here:
         DBConnection conn = new DBConnection();
+        Room room = new Room();
+        room.setRoomAmount(Double.parseDouble(txtRoomAmount.getText()));
+        room.roomNumber = Integer.parseInt(txtRoomNumber.getText());
+        room.roomType = (String) cmbRoomType.getSelectedItem();
+        
         try{
-            boolean sqlQuery = conn.statment.execute("INSERT INTO room(room_number,room_amount) VALUES ('"+txtRoomNumber.getText()+"','"+txtRoomAmount.getText()+"')");
+            boolean sqlQuery = conn.statment.execute("INSERT INTO room(roomNumber,room_amount,roomType) VALUES ('"+room.roomNumber+"','"+room.getRoomAmount()+"', '"+room.roomType+"')");
             if(!sqlQuery){
                 JOptionPane.showMessageDialog(null, "Data inserted successful");
-                this.setVisible(false);
-                new RoomAssistanceLogin().setVisible(true);
+               
             }
             else{
-                JOptionPane.showMessageDialog(null, "Error");
+                JOptionPane.showMessageDialog(null, "Ensure inserted data are correctly");
             }                       
         }
         catch(HeadlessException | SQLException e){
             JOptionPane.showMessageDialog(null, e);
         }
     }//GEN-LAST:event_btnAddRoomActionPerformed
+
+    private void cmbRoomTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbRoomTypeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbRoomTypeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -173,9 +199,11 @@ public class addRoom extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddRoom;
     private javax.swing.JButton btnCancel;
+    private javax.swing.JComboBox<String> cmbRoomType;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JTextField txtRoomAmount;
     private javax.swing.JTextField txtRoomNumber;
     // End of variables declaration//GEN-END:variables

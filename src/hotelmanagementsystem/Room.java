@@ -25,4 +25,5 @@ public class Room {
     public Double getRoomAmount(){
         return roomAmount;
     }
+        
 }
