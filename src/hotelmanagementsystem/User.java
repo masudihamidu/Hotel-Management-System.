@@ -10,7 +10,7 @@ import java.sql.ResultSet;
  *
  * @author I.A.T COMPUTERS LLC
  */
-public class User {
+public class User extends Room {
     private String username;
     private String password;
     private String gender;
@@ -31,7 +31,7 @@ public class User {
     }
     
 //    return username
-    String getUsername(){
+  public  String getUsername(){
         return username;
     }
     

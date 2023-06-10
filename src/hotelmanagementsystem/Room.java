@@ -18,6 +18,7 @@ public class Room {
         
     }
     
+    
     public void setRoomAmount(Double roomAmount){
         this.roomAmount = roomAmount;
     }
@@ -26,13 +27,16 @@ public class Room {
         return roomAmount;
     }
     
+   
     public void setRoomType(String roomType){
         this.roomType = roomType;
     }
     
+   
     public String getRoomType(){
         return roomType;
     }
+    
     
     public void setRoomNumber(int roomNumber){
         this.roomNumber = roomNumber;

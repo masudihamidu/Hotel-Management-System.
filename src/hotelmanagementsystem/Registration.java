@@ -9,7 +9,7 @@ package hotelmanagementsystem;
  *
  * @author I.A.T COMPUTERS LLC
  */
-public class Registration extends User{
+public class Registration extends User {
     private String lastName;
     private String registrationNumber;
     private String email;
@@ -19,12 +19,13 @@ public class Registration extends User{
         
     }
         
-    public String getLastName(){
-        return lastName;
-    }
-    
+      
     public void setLastName(String lastName){
         this.lastName = lastName;
+    }
+    
+     public String getLastName(){
+        return lastName;
     }
        
     public void setRegistrationNumber(String registrationNumber){
