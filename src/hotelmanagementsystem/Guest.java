@@ -6,9 +6,8 @@
 package hotelmanagementsystem;
 import java.awt.HeadlessException;
 import java.sql.*;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.text.SimpleDateFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -18,13 +17,11 @@ import javax.swing.JOptionPane;
  * @author I.A.T COMPUTERS LLC
  */
 
-class GuestDetails extends Registration implements roomInterface{
+class GuestDetails extends Registration{
     private String nationality;
-    private Date check_in_date;
-    private Date check_out_date;
-    private int roomNumber;
-    private Double roomAmount;
-    private String roomType;
+    Date check_in_date;
+    Date check_out_date;
+    
     
     GuestDetails(){
         
@@ -53,42 +50,6 @@ class GuestDetails extends Registration implements roomInterface{
     public Date getCheck_out_date(){
         return check_out_date;
     }           
-
-    @Override
-    public void setRoomNumber(int roomNumber) {
-        this.roomNumber = roomNumber;
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public int getRoomNumber() {
-        return roomNumber;
-        
-    }
-
-    @Override
-    public void setRoomAmount(Double roomAmount) {
-        this.roomAmount = roomAmount;
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public Double getRoomAmount() {
-        return roomAmount;
-        
-    }
-
-    @Override
-    public void setRoomType(String roomType) {
-        this.roomType = roomType;
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public String getRoomType() {
-        return roomType;
-        
-    }
         
 }
 public class Guest extends javax.swing.JFrame {
@@ -102,6 +63,11 @@ public class Guest extends javax.swing.JFrame {
         this.setTitle("Guest details");
         cmbGender.addItem("male");
         cmbGender.addItem("female");
+        cmbRoomNumber.addItem(String.valueOf(12));
+        cmbRoomNumber.addItem(String.valueOf(13));
+        cmbRoomType.addItem("Double");
+        
+        
     }
 
     /**
@@ -129,15 +95,15 @@ public class Guest extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        txtCheckInDate = new javax.swing.JTextField();
         txtEmail = new javax.swing.JTextField();
         cmbGender = new javax.swing.JComboBox<>();
         cmbRoomNumber = new javax.swing.JComboBox<>();
         cmbRoomType = new javax.swing.JComboBox<>();
         jLabel12 = new javax.swing.JLabel();
-        txtCheckOutDate = new javax.swing.JTextField();
         btnAdd = new javax.swing.JButton();
         btnCancel = new javax.swing.JButton();
+        txtCheckInDate = new com.toedter.calendar.JDateChooser();
+        txtCheckOutDate = new com.toedter.calendar.JDateChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -164,12 +130,6 @@ public class Guest extends javax.swing.JFrame {
 
         jLabel11.setText("Check-in-date");
 
-        txtCheckInDate.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtCheckInDateActionPerformed(evt);
-            }
-        });
-
         cmbGender.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbGenderActionPerformed(evt);
@@ -178,7 +138,7 @@ public class Guest extends javax.swing.JFrame {
 
         jLabel12.setText("Check-out-date");
 
-        btnAdd.setBackground(new java.awt.Color(51, 255, 51));
+        btnAdd.setBackground(new java.awt.Color(102, 255, 102));
         btnAdd.setText("Add");
         btnAdd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -186,7 +146,7 @@ public class Guest extends javax.swing.JFrame {
             }
         });
 
-        btnCancel.setBackground(new java.awt.Color(255, 51, 51));
+        btnCancel.setBackground(new java.awt.Color(255, 102, 102));
         btnCancel.setText("Cancel");
         btnCancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -214,11 +174,11 @@ public class Guest extends javax.swing.JFrame {
                                     .addComponent(jLabel10))
                                 .addGap(39, 39, 39))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGap(17, 17, 17)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel12)
                                     .addComponent(jLabel6))
-                                .addGap(29, 29, 29)))
+                                .addGap(24, 24, 24)))
                         .addGap(1, 1, 1)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(cmbRoomType, 0, 112, Short.MAX_VALUE)
@@ -226,29 +186,31 @@ public class Guest extends javax.swing.JFrame {
                             .addComponent(txtFirstName)
                             .addComponent(txtPhoneNumber)
                             .addComponent(cmbGender, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtCheckOutDate))
-                        .addGap(41, 41, 41)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addGap(42, 42, 42)
-                                .addComponent(txtLastName, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(txtNationality, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jLabel7)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtCheckOutDate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(40, 40, 40)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jLabel3)
+                                    .addGap(42, 42, 42)
+                                    .addComponent(txtLastName, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jLabel5)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(txtNationality, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                    .addComponent(jLabel7)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                     .addComponent(jLabel9)
-                                    .addComponent(jLabel11))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(cmbRoomNumber, 0, 117, Short.MAX_VALUE)
-                                    .addComponent(txtCheckInDate)))))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(cmbRoomNumber, 0, 117, Short.MAX_VALUE)
+                                        .addComponent(txtCheckInDate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel11)
+                                .addGap(140, 140, 140))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(37, 37, 37)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -281,23 +243,23 @@ public class Guest extends javax.swing.JFrame {
                     .addComponent(jLabel6))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cmbGender, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(cmbGender, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(cmbRoomNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel9)
                         .addComponent(jLabel8)))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtCheckInDate, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txtCheckInDate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel10)
-                        .addComponent(cmbRoomType, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel11)))
+                        .addComponent(cmbRoomType, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
+                        .addComponent(jLabel11)
+                        .addComponent(jLabel10)))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtCheckOutDate, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel12))
-                .addGap(38, 38, 38)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtCheckOutDate, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
                 .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -306,10 +268,6 @@ public class Guest extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void txtCheckInDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCheckInDateActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtCheckInDateActionPerformed
 
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
         // TODO add your handling code here:
@@ -325,7 +283,6 @@ public class Guest extends javax.swing.JFrame {
         // TODO add your handling code here:
         DBConnection conn = new DBConnection();
         GuestDetails guestDetails = new GuestDetails();
-        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
         guestDetails.setUsername(txtFirstName.getText());
         guestDetails.setLastName(txtLastName.getText());
         guestDetails.setId(txtNida.getText());
@@ -334,16 +291,14 @@ public class Guest extends javax.swing.JFrame {
         guestDetails.setGender((String)cmbGender.getSelectedItem());
         guestDetails.setPhoneNumber(txtPhoneNumber.getText());
         guestDetails.setRoomNumber(Integer.parseInt((String) cmbRoomNumber.getSelectedItem()));
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         guestDetails.setRoomType((String)cmbRoomType.getSelectedItem());
-        try {
-            guestDetails.setCheck_in_date(sdf.parse(txtCheckInDate.getText()));
-            guestDetails.setCheck_out_date(sdf.parse(txtCheckOutDate.getText()));
-        } catch (ParseException ex) {
-            Logger.getLogger(Guest.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        String checkInDate = dateFormat.format(txtCheckInDate.getDate());
+        String checkOutDate = dateFormat.format(txtCheckOutDate.getDate());
+         
         
         try{            
-            boolean b = conn.statment.execute("INSERT INTO guest VALUES('"+guestDetails.getUsername()+"','"+guestDetails.getLastName()+"','"+guestDetails.getId()+"', '"+guestDetails.getNationality()+"','"+guestDetails.getPhoneNumber()+"','"+guestDetails.getEmail() +"','"+guestDetails.getGender()+"','"+guestDetails.getRoomNumber()+"','"+guestDetails.getRoomType()+"','"+guestDetails.getCheck_in_date()+"','"+guestDetails.getCheck_out_date()+"')");
+            boolean b = conn.statment.execute("INSERT INTO guest(firstname,lastname,nidaId,nationality,phoneNumber,email,gender,roomNumber,roomType,check_in_date,check_out_date) VALUES('"+guestDetails.getUsername()+"','"+guestDetails.getLastName()+"','"+guestDetails.getId()+"', '"+guestDetails.getNationality()+"','"+guestDetails.getPhoneNumber()+"','"+guestDetails.getEmail() +"','"+guestDetails.getGender()+"','"+guestDetails.getRoomNumber()+"','"+guestDetails.getRoomType()+"','"+checkInDate+"','"+checkOutDate+"')");
             if(!b){
                 JOptionPane.showMessageDialog(null, "Data inserted successful");
                 
@@ -414,8 +369,8 @@ public class Guest extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JTextField txtCheckInDate;
-    private javax.swing.JTextField txtCheckOutDate;
+    private com.toedter.calendar.JDateChooser txtCheckInDate;
+    private com.toedter.calendar.JDateChooser txtCheckOutDate;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtFirstName;
     private javax.swing.JTextField txtLastName;

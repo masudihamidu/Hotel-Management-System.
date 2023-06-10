@@ -19,12 +19,13 @@ public class Registration extends User {
         
     }
         
-    public String getLastName(){
-        return lastName;
-    }
-    
+      
     public void setLastName(String lastName){
         this.lastName = lastName;
+    }
+    
+     public String getLastName(){
+        return lastName;
     }
        
     public void setRegistrationNumber(String registrationNumber){

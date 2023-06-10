@@ -103,7 +103,7 @@ public class EditGuestDetaiils extends javax.swing.JFrame {
         btnAdd.setBackground(new java.awt.Color(102, 255, 102));
         btnAdd.setText("Add");
 
-        jButton1.setBackground(new java.awt.Color(255, 102, 102));
+        jButton1.setBackground(new java.awt.Color(255, 153, 153));
         jButton1.setText("Cancel");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

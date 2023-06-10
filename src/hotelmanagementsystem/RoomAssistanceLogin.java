@@ -165,10 +165,10 @@ public class RoomAssistanceLogin extends javax.swing.JFrame {
             String username = txtUserName.getText();
             String password = new String(txtPassword.getPassword());
                        
-            String sqlStatment = "SELECT firstanme, password FROM roomassistance";
+            String sqlStatment = "SELECT firstname, password FROM roomassistance";
             ResultSet result = conn.statment.executeQuery(sqlStatment);
             if(result.next()){
-                String uname = result.getString("firstanme");
+                String uname = result.getString("firstname");
                 String pwd = result.getString("password");
                 
                 if((username.equals(uname)) && (password.equals(pwd))){  

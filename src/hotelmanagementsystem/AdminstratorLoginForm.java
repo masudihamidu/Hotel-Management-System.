@@ -48,6 +48,7 @@ public class AdminstratorLoginForm extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel4.setText("Password");
 
+        btnLogin.setBackground(new java.awt.Color(102, 255, 102));
         btnLogin.setText("Login");
         btnLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -55,7 +56,7 @@ public class AdminstratorLoginForm extends javax.swing.JFrame {
             }
         });
 
-        btnCancel.setBackground(new java.awt.Color(255, 153, 153));
+        btnCancel.setBackground(new java.awt.Color(255, 102, 102));
         btnCancel.setText("Cancel");
         btnCancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

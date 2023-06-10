@@ -43,14 +43,14 @@ public class delete_guest extends javax.swing.JFrame {
             }
         });
 
-        btnDelete.setBackground(new java.awt.Color(255, 51, 51));
+        btnDelete.setBackground(new java.awt.Color(255, 102, 102));
         btnDelete.setText("Delete");
 
         jLabel1.setText("Nida_ID");
 
         jLabel2.setText("Delete Room");
 
-        btnCancel.setBackground(new java.awt.Color(255, 102, 102));
+        btnCancel.setBackground(new java.awt.Color(255, 153, 153));
         btnCancel.setText("Cancel");
         btnCancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
