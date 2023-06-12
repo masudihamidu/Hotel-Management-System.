@@ -11,6 +11,7 @@ import javax.swing.JOptionPane;
  *
  * @author I.A.T COMPUTERS LLC
  */
+
 public class AdminstratorLoginForm extends javax.swing.JFrame {
     /**
      * Creates new form AdminstratorLoginForm
@@ -57,6 +58,7 @@ public class AdminstratorLoginForm extends javax.swing.JFrame {
         });
 
         btnCancel.setBackground(new java.awt.Color(255, 102, 102));
+        btnCancel.setIcon(new javax.swing.ImageIcon("C:\\Users\\I.A.T COMPUTERS LLC\\Documents\\NetBeansProjects\\HotelManagementSystem\\erase-128.png")); // NOI18N
         btnCancel.setText("Cancel");
         btnCancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

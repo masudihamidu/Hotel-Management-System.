@@ -202,16 +202,15 @@ public class RoomAssistanceRegistration extends javax.swing.JFrame {
       DBConnection conn = new DBConnection(); //instance of database connection
       
       Registration registrationDetails = new Registration(); //instance of registration class
-      
+       
       registrationDetails.setUsername(txtFirstName.getText());
       registrationDetails.setLastName(txtLastName.getText());
       registrationDetails.setRegistrationNumber(txtRegistrationNumber.getText());
       registrationDetails.setEmail(txtEmail.getText());
-      registrationDetails.setPassword(txtPassword.getText()); 
+      registrationDetails.setPassword(registrationDetails.encryption(txtPassword.getText())); 
       registrationDetails.setGender((String)cmbGender.getSelectedItem());
       registrationDetails.setPhoneNumber(txtPhonenumber.getText());
-     
-        
+             
         try{            
             boolean b = conn.statment.execute("INSERT INTO roomassistance(firstname,lastname,gender,registrationNumber,email,phoneNumber,password) VALUES('"+registrationDetails.getUsername()+"','"+registrationDetails.getLastName()+"','"+registrationDetails.getGender()+"','"+registrationDetails.getRegistrationNumber()+"','"+registrationDetails.getEmail()+"','"+registrationDetails.getPhoneNumber()+"','"+registrationDetails.getPassword()+"')");
             if(!b){
