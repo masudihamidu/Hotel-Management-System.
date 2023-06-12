@@ -4,8 +4,14 @@
  * and open the template in the editor.
  */
 package hotelmanagementsystem;
+import java.awt.HeadlessException;
 import javax.swing.JOptionPane;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 /**
  *
  * @author I.A.T COMPUTERS LLC
@@ -63,36 +69,58 @@ public class User extends Room {
         return id;
     }
     
-//    login method
-//    public boolean login(String username, String password, String sqlStatement){
-//        DBConnection conn = new DBConnection();
-//        String sqlQuery = null;
-//        sqlStatement = sqlQuery;
-//        this.username = username;
-//        this.password = password;
-//        
-//        try{
-//            ResultSet result = conn.statment.executeQuery(sqlStatement);
-//            if(result.next()){
-//                String uname = result.getString("firstanme");
-//                String pwd = result.getString("password");
-//                
-//                if((this.username.equals(uname)) && (this.password.equals(pwd))){  
-//                  new RoomAssistanceDashboard().setVisible(true); 
-//                  return true;
-//                }
-//                else
-//                {
-//                    JOptionPane.showMessageDialog(null, "Username and password does not match");
-//                    return false;
-//                }   
-//                
-//            } 
-//            
-//        }catch(Exception e){
-//            JOptionPane.showMessageDialog(null, e);
-//        }
-//            
-//        
-//    }
+//    Encryption method
+    public String encryption(String password){
+        try {
+            MessageDigest md = MessageDigest.getInstance("SHA-256");
+            byte[] passwordBytes = password.getBytes();
+            byte[] hashBytes = md.digest(passwordBytes);
+            StringBuilder sb = new StringBuilder();
+            for(byte b: hashBytes){
+                sb.append(String.format("%02x", b));
+            }
+            
+            return sb.toString();
+        } catch (NoSuchAlgorithmException ex) {
+            Logger.getLogger(User.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return null;
+
 }
+    
+//    login method
+    public boolean login(String username, String password, String sqlStatement){
+        DBConnection conn = new DBConnection();
+        String sqlQuery = null;
+        sqlStatement = sqlQuery;
+        this.username = username;
+        this.password = password;
+        
+        try{
+            ResultSet result = conn.statment.executeQuery(sqlStatement);
+            if(result.next()){
+                String uname = result.getString("firstanme");
+                String pwd = result.getString("password");
+                
+                if((this.username.equals(uname)) && (this.password.equals(pwd))){  
+                  new RoomAssistanceDashboard().setVisible(true); 
+                  return true;
+                }
+                else
+                {
+                    JOptionPane.showMessageDialog(null, "Username and password does not match");
+                    return false;
+                }   
+                
+            } 
+            
+        }catch(HeadlessException | SQLException e){
+            JOptionPane.showMessageDialog(null, e);
+        }
+        return false;
+            
+        
+    }
+}
+

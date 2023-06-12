@@ -139,6 +139,7 @@ public class Guest extends javax.swing.JFrame {
         jLabel12.setText("Check-out-date");
 
         btnAdd.setBackground(new java.awt.Color(102, 255, 102));
+        btnAdd.setIcon(new javax.swing.ImageIcon("C:\\Users\\I.A.T COMPUTERS LLC\\Documents\\NetBeansProjects\\HotelManagementSystem\\Save-icon.png")); // NOI18N
         btnAdd.setText("Add");
         btnAdd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
