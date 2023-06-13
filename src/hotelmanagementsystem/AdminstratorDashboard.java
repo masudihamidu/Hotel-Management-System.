@@ -20,10 +20,34 @@ public class AdminstratorDashboard extends javax.swing.JFrame {
     /**
      * Creates new form AdminstratorDashboard
      */
+    DBConnection conn = new DBConnection();
+    Room room = new Room();
     public AdminstratorDashboard() {
         initComponents();
         this.setLocationRelativeTo(null);
         this.setTitle("Adminstrator dashboard");
+         
+        String sqlQuery = "SELECT roomNumber,room_amount,roomType FROM room";
+        
+        try {
+            ResultSet result = conn.statment.executeQuery(sqlQuery);
+            while(result.next()) //data will be added while the true
+            {
+                room.setRoomNumber(result.getInt("roomNumber"));
+                room.setRoomAmount(result.getDouble("room_amount"));
+                room.setRoomType(result.getString("roomType"));           
+             
+                String ArraytableData[] = {String.valueOf(room.getRoomNumber()),String.valueOf(room.getRoomAmount()),room.getRoomType()};
+                
+                DefaultTableModel tableModel = (DefaultTableModel) tableData.getModel();
+                
+//                add array data table into table
+                tableModel.addRow(ArraytableData);
+            }   
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(AdminstratorDashboard.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -167,29 +191,7 @@ public class AdminstratorDashboard extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        DBConnection conn = new DBConnection();
-        Room room = new Room();
-        String sqlQuery = "SELECT roomNumber,room_amount,roomType FROM room";
-        
-        try {
-            ResultSet result = conn.statment.executeQuery(sqlQuery);
-            while(result.next()) //data will be added while the true
-            {
-                room.setRoomNumber(result.getInt("roomNumber"));
-                room.setRoomAmount(result.getDouble("room_amount"));
-                room.setRoomType(result.getString("roomType"));           
-             
-                String ArraytableData[] = {String.valueOf(room.getRoomNumber()),String.valueOf(room.getRoomAmount()),room.getRoomType()};
-                
-                DefaultTableModel tableModel = (DefaultTableModel) tableData.getModel();
-                
-//                add array data table into table
-                tableModel.addRow(ArraytableData);
-            }   
-            
-        } catch (SQLException ex) {
-            Logger.getLogger(AdminstratorDashboard.class.getName()).log(Level.SEVERE, null, ex);
-        }
+       
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
