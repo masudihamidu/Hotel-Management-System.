@@ -54,19 +54,36 @@ class GuestDetails extends Registration{
 }
 public class Guest extends javax.swing.JFrame {
 
+    DBConnection conn = new DBConnection();
     /**
      * Creates new form Guest
      */
     public Guest() {
-        initComponents();
-        this.setLocationRelativeTo(null);
-        this.setTitle("Guest details");
-        cmbGender.addItem("male");
-        cmbGender.addItem("female");
-        cmbRoomNumber.addItem(String.valueOf(12));
-        cmbRoomNumber.addItem(String.valueOf(13));
-        cmbRoomType.addItem("Double");
-        
+        try {
+            initComponents();
+            this.setLocationRelativeTo(null);
+            this.setTitle("Guest details");
+            cmbGender.addItem("male");
+            cmbGender.addItem("female");                       
+            
+            String sqlStatmentRoomType = "SELECT roomType FROM room";
+            ResultSet resultRoomType = conn.statment.executeQuery(sqlStatmentRoomType);
+            while(resultRoomType.next()){
+                String roomType = resultRoomType.getString("roomType");
+                cmbRoomType.addItem(roomType);
+            }
+            
+            String sqlStatementRoomNumber = "SELECT roomNumber FROM room";
+            ResultSet resultRoomNumber = conn.statment.executeQuery(sqlStatementRoomNumber);
+            while(resultRoomNumber.next()){
+                String roomNumber = resultRoomNumber.getString("roomNumber");
+                cmbRoomNumber.addItem(roomNumber);
+            }                                   
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(Guest.class.getName()).log(Level.SEVERE, null, ex);
+        }          
+              
         
     }
 
@@ -282,8 +299,8 @@ public class Guest extends javax.swing.JFrame {
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         // TODO add your handling code here:
-        DBConnection conn = new DBConnection();
         GuestDetails guestDetails = new GuestDetails();
+        Room room = new Room();
         guestDetails.setUsername(txtFirstName.getText());
         guestDetails.setLastName(txtLastName.getText());
         guestDetails.setId(txtNida.getText());
@@ -291,15 +308,13 @@ public class Guest extends javax.swing.JFrame {
         guestDetails.setEmail(txtEmail.getText());
         guestDetails.setGender((String)cmbGender.getSelectedItem());
         guestDetails.setPhoneNumber(txtPhoneNumber.getText());
-        guestDetails.setRoomNumber(Integer.parseInt((String) cmbRoomNumber.getSelectedItem()));
+        room.setRoomNumber(Integer.parseInt((String) cmbRoomNumber.getSelectedItem()));
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        guestDetails.setRoomType((String)cmbRoomType.getSelectedItem());
+        room.setRoomType((String)cmbRoomType.getSelectedItem());
         String checkInDate = dateFormat.format(txtCheckInDate.getDate());
         String checkOutDate = dateFormat.format(txtCheckOutDate.getDate());
-         
-        
-        try{            
-            boolean b = conn.statment.execute("INSERT INTO guest(firstname,lastname,nidaId,nationality,phoneNumber,email,gender,roomNumber,roomType,check_in_date,check_out_date) VALUES('"+guestDetails.getUsername()+"','"+guestDetails.getLastName()+"','"+guestDetails.getId()+"', '"+guestDetails.getNationality()+"','"+guestDetails.getPhoneNumber()+"','"+guestDetails.getEmail() +"','"+guestDetails.getGender()+"','"+guestDetails.getRoomNumber()+"','"+guestDetails.getRoomType()+"','"+checkInDate+"','"+checkOutDate+"')");
+        try{
+            boolean b = conn.statment.execute("INSERT INTO guest(firstname,lastname,nidaId,nationality,phoneNumber,email,gender,roomNumber,roomType,check_in_date,check_out_date) VALUES('"+guestDetails.getUsername()+"','"+guestDetails.getLastName()+"','"+guestDetails.getId()+"', '"+guestDetails.getNationality()+"','"+guestDetails.getPhoneNumber()+"','"+guestDetails.getEmail() +"','"+guestDetails.getGender()+"','"+room.getRoomNumber()+"','"+room.getRoomType()+"','"+checkInDate+"','"+checkOutDate+"')");
             if(!b){
                 JOptionPane.showMessageDialog(null, "Data inserted successful");
                 
@@ -312,8 +327,6 @@ public class Guest extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(Guest.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        
         
     }//GEN-LAST:event_btnAddActionPerformed
 

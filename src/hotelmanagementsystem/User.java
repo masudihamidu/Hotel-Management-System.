@@ -16,7 +16,7 @@ import java.util.logging.Logger;
  *
  * @author I.A.T COMPUTERS LLC
  */
-public class User extends Room {
+public class User{
     private String username;
     private String password;
     private String gender;
@@ -24,6 +24,13 @@ public class User extends Room {
     
     User(){
         
+    }
+    
+    User(String username, String password, String gender, String id){
+        this.username = username;
+        this.password = password;
+        this.gender = gender;
+        this.id = id;
     }
     
     User(String username, String password){

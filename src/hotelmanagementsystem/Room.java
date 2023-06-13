@@ -14,10 +14,15 @@ public class Room {
     private String roomType;
     private Double roomAmount;
     
-    Room(){
+    public Room(){
         
     }
     
+    Room(int roomNumber, String roomType, Double roomAmount){
+        this.roomNumber = roomNumber;
+        this.roomType = roomType;
+        this.roomAmount = roomAmount;
+    }
     
     public void setRoomAmount(Double roomAmount){
         this.roomAmount = roomAmount;
