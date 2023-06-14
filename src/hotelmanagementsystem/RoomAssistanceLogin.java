@@ -55,6 +55,7 @@ public class RoomAssistanceLogin extends javax.swing.JFrame {
 
         jLabel4.setText("Password");
 
+        jButton1.setBackground(new java.awt.Color(0, 102, 153));
         jButton1.setText("Login");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -62,6 +63,7 @@ public class RoomAssistanceLogin extends javax.swing.JFrame {
             }
         });
 
+        btnCancel.setBackground(new java.awt.Color(255, 102, 102));
         btnCancel.setText("Cancel");
         btnCancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

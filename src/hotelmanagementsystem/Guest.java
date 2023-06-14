@@ -17,44 +17,11 @@ import javax.swing.JOptionPane;
  * @author I.A.T COMPUTERS LLC
  */
 
-class GuestDetails extends Registration{
-    private String nationality;
-    Date check_in_date;
-    Date check_out_date;
-    
-    
-    GuestDetails(){
-        
-    }
-    
-    public void setNationality(String nationality){
-        this.nationality = nationality;
-    }
-    
-    public String getNationality(){
-        return nationality;
-    }
-    
-    public void setCheck_in_date(Date check_in_date){
-        this.check_in_date = check_in_date;
-    }
-    
-    public Date getCheck_in_date(){
-        return check_in_date;
-    }
-    
-    public void setCheck_out_date(Date check_out_date){
-        this.check_out_date = check_out_date;
-    }
-    
-    public Date getCheck_out_date(){
-        return check_out_date;
-    }           
-        
-}
+
 public class Guest extends javax.swing.JFrame {
 
     DBConnection conn = new DBConnection();
+    GuestDetails guest = new GuestDetails();
     /**
      * Creates new form Guest
      */
@@ -64,15 +31,10 @@ public class Guest extends javax.swing.JFrame {
             this.setLocationRelativeTo(null);
             this.setTitle("Guest details");
             cmbGender.addItem("male");
-            cmbGender.addItem("female");                       
-            
-            String sqlStatmentRoomType = "SELECT roomType FROM room";
-            ResultSet resultRoomType = conn.statment.executeQuery(sqlStatmentRoomType);
-            while(resultRoomType.next()){
-                String roomType = resultRoomType.getString("roomType");
-                cmbRoomType.addItem(roomType);
-            }
-            
+            cmbGender.addItem("female");
+            cmbRoomType.addItem("Double");
+            cmbRoomType.addItem("Single");
+                              
             String sqlStatementRoomNumber = "SELECT roomNumber FROM room";
             ResultSet resultRoomNumber = conn.statment.executeQuery(sqlStatementRoomNumber);
             while(resultRoomNumber.next()){
@@ -155,7 +117,7 @@ public class Guest extends javax.swing.JFrame {
 
         jLabel12.setText("Check-out-date");
 
-        btnAdd.setBackground(new java.awt.Color(102, 255, 102));
+        btnAdd.setBackground(new java.awt.Color(0, 102, 153));
         btnAdd.setIcon(new javax.swing.ImageIcon("C:\\Users\\I.A.T COMPUTERS LLC\\Documents\\NetBeansProjects\\HotelManagementSystem\\Save-icon.png")); // NOI18N
         btnAdd.setText("Add");
         btnAdd.addActionListener(new java.awt.event.ActionListener() {
@@ -164,8 +126,8 @@ public class Guest extends javax.swing.JFrame {
             }
         });
 
-        btnCancel.setBackground(new java.awt.Color(255, 102, 102));
-        btnCancel.setText("Cancel");
+        btnCancel.setBackground(new java.awt.Color(255, 153, 153));
+        btnCancel.setText("Go back");
         btnCancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCancelActionPerformed(evt);

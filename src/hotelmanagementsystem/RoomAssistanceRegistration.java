@@ -4,11 +4,9 @@
  * and open the template in the editor.
  */
 package hotelmanagementsystem;
-import java.awt.HeadlessException;
 import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JOptionPane;
 
 public class RoomAssistanceRegistration extends javax.swing.JFrame {
 
@@ -73,7 +71,7 @@ public class RoomAssistanceRegistration extends javax.swing.JFrame {
 
         jLabel7.setText("Password");
 
-        btnRegistry.setBackground(new java.awt.Color(102, 255, 102));
+        btnRegistry.setBackground(new java.awt.Color(0, 102, 153));
         btnRegistry.setText("Registry");
         btnRegistry.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

@@ -40,6 +40,7 @@ public class LoginOptions extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel1.setText("Hotel management system");
 
+        btnAdminstrator.setBackground(new java.awt.Color(0, 102, 153));
         btnAdminstrator.setText("Adminstrator");
         btnAdminstrator.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -47,6 +48,7 @@ public class LoginOptions extends javax.swing.JFrame {
             }
         });
 
+        btnHotelManager.setBackground(new java.awt.Color(0, 102, 153));
         btnHotelManager.setText("Hotel manager");
         btnHotelManager.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -54,6 +56,7 @@ public class LoginOptions extends javax.swing.JFrame {
             }
         });
 
+        btnRoomAssistance.setBackground(new java.awt.Color(0, 102, 153));
         btnRoomAssistance.setText("Room assistance");
         btnRoomAssistance.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

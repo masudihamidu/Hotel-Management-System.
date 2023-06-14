@@ -100,8 +100,8 @@ public class EditGuestDetaiils extends javax.swing.JFrame {
             }
         });
 
-        btnAdd.setBackground(new java.awt.Color(102, 255, 102));
-        btnAdd.setText("Add");
+        btnAdd.setBackground(new java.awt.Color(0, 102, 153));
+        btnAdd.setText("Edit");
 
         jButton1.setBackground(new java.awt.Color(255, 153, 153));
         jButton1.setText("Cancel");
