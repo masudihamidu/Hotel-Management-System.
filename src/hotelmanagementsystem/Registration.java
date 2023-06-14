@@ -62,7 +62,14 @@ public class Registration extends User {
     
     public boolean register(String username, String lastname, String gender, String registrationNumber, String email, String phoneNumber, String password) throws SQLException{
         boolean registrationSuccess  = false;
-        
+        this.setUsername(username);
+        this.setLastName(lastname);
+        this.setGender(gender);
+        this.setEmail(email);
+        this.setRegistrationNumber(registrationNumber);
+        this.setPhoneNumber(phoneNumber);
+        this.setPassword(password);
+               
         if(username.isEmpty() || lastname.isEmpty() || gender.isEmpty() || registrationNumber.isEmpty() || email.isEmpty() || phoneNumber.isEmpty() || password.isEmpty()){
             JOptionPane.showMessageDialog(null, "Please fill all fields.", "Registration Error", JOptionPane.ERROR_MESSAGE);
             return registrationSuccess;
@@ -124,10 +131,10 @@ public class Registration extends User {
 
 //        Database connection nad registration logic
         DBConnection conn = new DBConnection();
-        Registration registrationDetails = new Registration();
-        
+//        Registration registrationDetails = new Registration();
+                
         try{            
-            boolean b = conn.statment.execute("INSERT INTO roomassistance(firstname,lastname,gender,registrationNumber,email,phoneNumber,password) VALUES('"+registrationDetails.getUsername()+"','"+registrationDetails.getLastName()+"','"+registrationDetails.getGender()+"','"+registrationDetails.getRegistrationNumber()+"','"+registrationDetails.getEmail()+"','"+registrationDetails.getPhoneNumber()+"','"+registrationDetails.getPassword()+"')");
+            boolean b = conn.statment.execute("INSERT INTO roomassistance(firstname,lastname,gender,registrationNumber,email,phoneNumber,password) VALUES('"+this.getUsername()+"','"+this.getLastName()+"','"+this.getGender()+"','"+getRegistrationNumber()+"','"+getEmail()+"','"+getPhoneNumber()+"','"+getPassword()+"')");
             if(!b){
                 JOptionPane.showMessageDialog(null, "Data inserted successful");
                 new RoomAssistanceLogin().setVisible(true);

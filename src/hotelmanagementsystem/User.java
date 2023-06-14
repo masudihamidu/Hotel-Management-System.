@@ -32,11 +32,7 @@ public class User{
         this.gender = gender;
         this.id = id;
     }
-    
-    User(String username, String password){
-        this.username = username;
-        this.password = password;
-    }
+   
     
 //    parameter to set useraname
   public void setUsername(String username){

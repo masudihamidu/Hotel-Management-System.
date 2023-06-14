@@ -5,12 +5,22 @@
  */
 package hotelmanagementsystem;
 
+import java.sql.Date;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author I.A.T COMPUTERS LLC
  */
 public class RoomAssistanceDashboard extends javax.swing.JFrame {
-
+    DBConnection conn = new DBConnection();
+    Room room = new Room();
+    GuestDetails guestDetails = new GuestDetails();
+                
     /**
      * Creates new form RoomAssistanceDashboard
      */
@@ -18,6 +28,40 @@ public class RoomAssistanceDashboard extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         this.setTitle("Room assistance dashboard");
+               
+        String sqlQuery = "SELECT firstname,lastname,nidaId,nationality,phoneNumber,email,gender,roomNumber,roomType,check_in_date,check_out_date, DATEDIFF(check_in_date,check_out_date) AS bill FROM guest";
+        
+        try {
+            ResultSet result = conn.statment.executeQuery(sqlQuery);
+            while(result.next()) //data will be added while the true
+            {
+                guestDetails.setUsername(result.getString("firstname"));
+                guestDetails.setLastName(result.getString("lastname"));
+                guestDetails.setId(result.getString("nidaId"));  
+                guestDetails.setNationality(result.getString("nationality")); 
+                guestDetails.setPhoneNumber(result.getString("phoneNumber"));
+                guestDetails.setEmail(result.getString("email"));
+                guestDetails.setGender(result.getString("gender"));
+                room.setRoomNumber(result.getInt("roomNumber"));
+                room.setRoomType(result.getString("roomType"));
+                guestDetails.setCheck_in_date(result.getDate("check_in_date")); 
+                guestDetails.setCheck_out_date(result.getDate("check_out_date")); 
+             
+                String ArraytableData[] = {guestDetails.getUsername(),guestDetails.getLastName(),guestDetails.getId(),guestDetails.getNationality(),guestDetails.getPhoneNumber(),guestDetails.getEmail(),
+                                           guestDetails.getGender(), String.valueOf(room.getRoomNumber()),
+                                           room.getRoomType(),
+                                           String.valueOf(guestDetails.getCheck_in_date()),
+                                           String.valueOf(guestDetails.check_out_date)};
+                
+                DefaultTableModel tableModel = (DefaultTableModel) tableData.getModel();
+                
+//                add array data table into table
+                tableModel.addRow(ArraytableData);
+            }   
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(AdminstratorDashboard.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -31,7 +75,7 @@ public class RoomAssistanceDashboard extends javax.swing.JFrame {
 
         btnLogout = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tableData = new javax.swing.JTable();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu2 = new javax.swing.JMenu();
         jMenu3 = new javax.swing.JMenu();
@@ -47,15 +91,15 @@ public class RoomAssistanceDashboard extends javax.swing.JFrame {
             }
         });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tableData.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "First name", "Last name", "NIDA Identity card", "Nationality", "Phone number", "Email", "Gender", "Room number", "Room type", "Check in date", "Check out date"
+                "First name", "Last name", "NIDA Identity card", "Nationality", "Phone number", "Email", "Gender", "Room number", "Room type", "Check in date", "Check out date", "Bill"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tableData);
 
         jMenu2.setText("Edit");
         jMenu2.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -88,12 +132,13 @@ public class RoomAssistanceDashboard extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btnLogout))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1070, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1070, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnLogout)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -110,6 +155,7 @@ public class RoomAssistanceDashboard extends javax.swing.JFrame {
 
     private void lblMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMenuMouseClicked
         // TODO add your handling code here:
+        this.setVisible(false);
        new Guest().setVisible(true);
     }//GEN-LAST:event_lblMenuMouseClicked
 
@@ -173,7 +219,7 @@ public class RoomAssistanceDashboard extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JMenu lblMenu;
+    private javax.swing.JTable tableData;
     // End of variables declaration//GEN-END:variables
 }

@@ -52,6 +52,7 @@ public class addRoom extends javax.swing.JFrame {
 
         jLabel2.setText("Room amount");
 
+        btnAddRoom.setBackground(new java.awt.Color(0, 102, 153));
         btnAddRoom.setText("Add");
         btnAddRoom.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -59,6 +60,7 @@ public class addRoom extends javax.swing.JFrame {
             }
         });
 
+        btnCancel.setBackground(new java.awt.Color(255, 153, 153));
         btnCancel.setText("Cancel");
         btnCancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
