@@ -201,23 +201,8 @@ public class RoomAssistanceRegistration extends javax.swing.JFrame {
       
       Registration registrationDetails = new Registration(); //instance of registration class
   
-      registrationDetails.setUsername(txtFirstName.getText());
-      registrationDetails.setLastName(txtLastName.getText());
-      registrationDetails.setRegistrationNumber(txtRegistrationNumber.getText());
-      registrationDetails.setEmail(txtEmail.getText());
-      registrationDetails.setPassword(registrationDetails.encryption(txtPassword.getText())); 
-      registrationDetails.setGender((String)cmbGender.getSelectedItem());
-      registrationDetails.setPhoneNumber(txtPhonenumber.getText());
-      
-      String firstName = registrationDetails.getUsername();
-      String lastName = registrationDetails.getLastName();
-      String registrationNumber = registrationDetails.getRegistrationNumber();
-      String email = registrationDetails.getEmail();
-      String password = registrationDetails.getPassword();
-      String gender = registrationDetails.getGender();
-      String phoneNumber = registrationDetails.getPhoneNumber();
         try {
-            registrationDetails.register(firstName, lastName, gender,registrationNumber, email, phoneNumber, password);
+            registrationDetails.register(txtFirstName.getText(), txtLastName.getText(),(String) cmbGender.getSelectedItem(),txtRegistrationNumber.getText(), txtEmail.getText(),(String)cmbGender.getSelectedItem() , txtPhonenumber.getText());
         } catch (SQLException ex) {
             Logger.getLogger(RoomAssistanceRegistration.class.getName()).log(Level.SEVERE, null, ex);
         }
