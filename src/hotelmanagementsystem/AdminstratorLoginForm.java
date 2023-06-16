@@ -127,8 +127,8 @@ public class AdminstratorLoginForm extends javax.swing.JFrame {
             String password = new String(txtPassword.getPassword());
             user.setUsername(txtUserName.getText());
             user.setPassword(String.valueOf(txtPassword.getPassword()));
-                        
-            String sqlStatment = "SELECT * FROM admin";
+//SELECT firstname, password FROM roomassistance WHERE firstname = '"+username+"'AND password = '"+password+"'"                        
+            String sqlStatment = "SELECT * FROM admin WHERE username='"+username+"' AND password = '"+password+"'";
             ResultSet result = conn.statment.executeQuery(sqlStatment);
             if(result.next()){
                 String uname = result.getString("username");

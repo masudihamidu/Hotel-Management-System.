@@ -167,7 +167,7 @@ public class RoomAssistanceLogin extends javax.swing.JFrame {
           try{
             String username = txtUserName.getText();
             String password = new String(txtPassword.getPassword());
-             String enteredEncrypted =  registrationDetails.encryption(password);
+//            String enteredEncrypted =  registrationDetails.encryption(password);
                        
             String sqlStatment = "SELECT firstname, password FROM roomassistance WHERE firstname = '"+username+"'AND password = '"+password+"'";
             ResultSet result = conn.statment.executeQuery(sqlStatment);
@@ -175,7 +175,7 @@ public class RoomAssistanceLogin extends javax.swing.JFrame {
                 String uname = result.getString("firstname");
                 String pwd = result.getString("password");               
    
-                if((username.equals(uname)) && (enteredEncrypted.equals(pwd))){  
+                if((username.equals(uname)) && (registrationDetails.encryption(password).equals(pwd))){  
                   new RoomAssistanceDashboard().setVisible(true);                 
                   this.setVisible(false);
                 }

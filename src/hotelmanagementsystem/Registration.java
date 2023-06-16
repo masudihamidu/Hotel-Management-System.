@@ -68,13 +68,8 @@ public class Registration extends User {
         this.setEmail(email);
         this.setRegistrationNumber(registrationNumber);
         this.setPhoneNumber(phoneNumber);
-        this.setPassword(password);
-               
-        if(username.isEmpty() || lastname.isEmpty() || gender.isEmpty() || registrationNumber.isEmpty() || email.isEmpty() || phoneNumber.isEmpty() || password.isEmpty()){
-            JOptionPane.showMessageDialog(null, "Please fill all fields.", "Registration Error", JOptionPane.ERROR_MESSAGE);
-            return registrationSuccess;
-        }
-        
+        this.setPassword(encryption(password));                         
+//              
 //    check username is empty    
         if(username.isEmpty()){
             JOptionPane.showMessageDialog(null, "Please provide firstname");   
@@ -124,8 +119,8 @@ public class Registration extends User {
         }
         
 //        check password length
-        if (password.length() < 8) {
-            JOptionPane.showMessageDialog(null, "Password must be at least 8 characters long.", "Registration Error", JOptionPane.ERROR_MESSAGE);
+        if (password.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Please provide password.", "Registration Error", JOptionPane.ERROR_MESSAGE);
             return registrationSuccess;
         }
 
