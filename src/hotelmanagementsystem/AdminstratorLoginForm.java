@@ -119,35 +119,13 @@ public class AdminstratorLoginForm extends javax.swing.JFrame {
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         // TODO add your handling code here:
+        Admin admin = new Admin();
+        String username = txtUserName.getText();
+        String password = new String(txtPassword.getPassword());
+        String sqlStatment = "SELECT * FROM admin WHERE username='"+username+"' AND password = '"+password+"'";
         
-        DBConnection conn = new DBConnection();    
-        User user = new User();
-        try{
-            String username = txtUserName.getText();
-            String password = new String(txtPassword.getPassword());
-            user.setUsername(txtUserName.getText());
-            user.setPassword(String.valueOf(txtPassword.getPassword()));
-//SELECT firstname, password FROM roomassistance WHERE firstname = '"+username+"'AND password = '"+password+"'"                        
-            String sqlStatment = "SELECT * FROM admin WHERE username='"+username+"' AND password = '"+password+"'";
-            ResultSet result = conn.statment.executeQuery(sqlStatment);
-            if(result.next()){
-                String uname = result.getString("username");
-                String pwd = result.getString("password");
-                
-                if((username.equals(uname)) && (password.equals(pwd))){  
-                  new AdminstratorDashboard().setVisible(true);
-                  this.setVisible(false);
-                }
-                else
-                {
-                    JOptionPane.showMessageDialog(null, "Username and password does not match");
-                }   
-                
-            }         
-        }
-        catch(Exception e){
-            JOptionPane.showMessageDialog(null, e);
-        }
+        admin.login(username, password, sqlStatment);
+       
     }//GEN-LAST:event_btnLoginActionPerformed
 
     /**

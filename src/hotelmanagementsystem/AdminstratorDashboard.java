@@ -169,6 +169,7 @@ public class AdminstratorDashboard extends javax.swing.JFrame {
     private void menuAddRoomMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuAddRoomMouseClicked
         // TODO add your handling code here:
         new addRoom().setVisible(true);
+        this.setVisible(false);
         
     }//GEN-LAST:event_menuAddRoomMouseClicked
 
