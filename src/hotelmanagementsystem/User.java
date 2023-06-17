@@ -95,15 +95,13 @@ public class User{
 //    login method
     public boolean login(String username, String password, String sqlStatement){
         DBConnection conn = new DBConnection();
-        String sqlQuery = null;
-        sqlStatement = sqlQuery;
         this.username = username;
         this.password = password;
         
         try{
             ResultSet result = conn.statment.executeQuery(sqlStatement);
             if(result.next()){
-                String uname = result.getString("firstanme");
+                String uname = result.getString("firstname");
                 String pwd = result.getString("password");
                 
                 if((this.username.equals(uname)) && (this.password.equals(pwd))){  
