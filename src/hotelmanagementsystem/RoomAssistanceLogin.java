@@ -160,15 +160,13 @@ public class RoomAssistanceLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel6KeyPressed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        //DBConnection conn = new DBConnection();
+        
         Registration registrationDetails = new Registration();
         String username = txtUserName.getText();
         String password = new String(txtPassword.getPassword());
         String sqlStatment = "SELECT firstname, password FROM roomassistance WHERE firstname = '"+username+"'AND password = '"+password+"'";
         
-        registrationDetails.login(username, password, sqlStatment);
-                
+        registrationDetails.login(username, password, sqlStatment);         
          
     }//GEN-LAST:event_jButton1ActionPerformed
 

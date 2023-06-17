@@ -92,7 +92,7 @@ public class User{
 
 }
     
-//    login method
+//    login method that accept three parameters for username, password, and sql statement
     public boolean login(String username, String password, String sqlStatement){
         DBConnection conn = new DBConnection();
         this.username = username;
@@ -120,8 +120,7 @@ public class User{
             JOptionPane.showMessageDialog(null, e);
         }
         return false;
-            
-        
     }
+    
 }
 
