@@ -5,9 +5,6 @@
  */
 package hotelmanagementsystem;
 
-import java.sql.ResultSet;
-import javax.swing.JOptionPane;
-
 /**
  *
  * @author I.A.T COMPUTERS LLC
@@ -64,6 +61,7 @@ public class RoomAssistanceLogin extends javax.swing.JFrame {
         });
 
         btnCancel.setBackground(new java.awt.Color(255, 102, 102));
+        btnCancel.setIcon(new javax.swing.ImageIcon("C:\\Users\\I.A.T COMPUTERS LLC\\Documents\\NetBeansProjects\\HotelManagementSystem\\erase-128.png")); // NOI18N
         btnCancel.setText("Cancel");
         btnCancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -117,7 +115,7 @@ public class RoomAssistanceLogin extends javax.swing.JFrame {
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                         .addComponent(txtUserName)
                                         .addComponent(txtPassword, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)))
-                                .addComponent(btnCancel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                                .addComponent(btnCancel, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)))))
                 .addContainerGap(59, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -161,7 +159,7 @@ public class RoomAssistanceLogin extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         
-        Registration registrationDetails = new Registration();
+        Employee registrationDetails = new Employee();
         String username = txtUserName.getText();
         String password = new String(txtPassword.getPassword());
         String sqlStatment = "SELECT firstname, password FROM roomassistance WHERE firstname = '"+username+"'AND password = '"+password+"'";

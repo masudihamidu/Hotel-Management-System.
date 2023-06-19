@@ -4,8 +4,7 @@
  * and open the template in the editor.
  */
 package hotelmanagementsystem;
-import java.awt.HeadlessException;
-import java.sql.*;
+
 import javax.swing.JOptionPane;
 
 /**
@@ -53,6 +52,7 @@ public class addRoom extends javax.swing.JFrame {
         jLabel2.setText("Room amount");
 
         btnAddRoom.setBackground(new java.awt.Color(0, 102, 153));
+        btnAddRoom.setIcon(new javax.swing.ImageIcon("C:\\Users\\I.A.T COMPUTERS LLC\\Documents\\NetBeansProjects\\HotelManagementSystem\\Save-icon.png")); // NOI18N
         btnAddRoom.setText("Add");
         btnAddRoom.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -61,6 +61,7 @@ public class addRoom extends javax.swing.JFrame {
         });
 
         btnCancel.setBackground(new java.awt.Color(255, 153, 153));
+        btnCancel.setIcon(new javax.swing.ImageIcon("C:\\Users\\I.A.T COMPUTERS LLC\\Documents\\NetBeansProjects\\HotelManagementSystem\\erase-128.png")); // NOI18N
         btnCancel.setText("Cancel");
         btnCancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -104,9 +105,9 @@ public class addRoom extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(59, 59, 59)
+                .addGap(50, 50, 50)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
@@ -137,25 +138,16 @@ public class addRoom extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCancelActionPerformed
 
     private void btnAddRoomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddRoomActionPerformed
-        // TODO add your handling code here:
-        DBConnection conn = new DBConnection();
+        // TODO add your handling code here:           
         Room room = new Room();
-        room.setRoomAmount(Double.parseDouble(txtRoomAmount.getText()));
-        room.setRoomNumber(Integer.parseInt(txtRoomNumber.getText()));
-        room.setRoomType((String) cmbRoomType.getSelectedItem());
-        
         try{
-            boolean sqlQuery = conn.statment.execute("INSERT INTO room(roomNumber,room_amount,roomType) VALUES ('"+room.getRoomNumber()+"','"+room.getRoomAmount()+"', '"+room.getRoomType()+"')");
-            if(!sqlQuery){
-                JOptionPane.showMessageDialog(null, "Data inserted successful");
-               
-            }
-            else{
-                JOptionPane.showMessageDialog(null, "Ensure inserted data are correctly");
-            }                       
+        String sqlQuery = "INSERT INTO room(roomNumber,room_amount,roomType) VALUES ('"+Integer.parseInt(txtRoomNumber.getText())+"','"+Double.parseDouble(txtRoomAmount.getText())+"', '"+ cmbRoomType.getSelectedItem()+"')";
+        room.addRoom(Integer.parseInt(txtRoomNumber.getText()),
+                Double.parseDouble(txtRoomAmount.getText()),
+                (String) cmbRoomType.getSelectedItem(),sqlQuery);
         }
-        catch(HeadlessException | SQLException e){
-            JOptionPane.showMessageDialog(null, e);
+        catch(NumberFormatException e){
+            JOptionPane.showMessageDialog(null, "Please provide numeric values");
         }
     }//GEN-LAST:event_btnAddRoomActionPerformed
 

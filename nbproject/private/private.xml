@@ -4,18 +4,21 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/I.A.T%20COMPUTERS%20LLC/Documents/NetBeansProjects/HotelManagementSystem/src/hotelmanagementsystem/HotelManagementSystem.java</file>
-            <file>file:/C:/Users/I.A.T%20COMPUTERS%20LLC/Documents/NetBeansProjects/HotelManagementSystem/src/hotelmanagementsystem/GuestDetails.java</file>
+            <file>file:/C:/Users/I.A.T%20COMPUTERS%20LLC/Documents/NetBeansProjects/HotelManagementSystem/src/hotelmanagementsystem/EditRoomDetails.java</file>
+            <file>file:/C:/Users/I.A.T%20COMPUTERS%20LLC/Documents/NetBeansProjects/HotelManagementSystem/src/hotelmanagementsystem/AddGuest.java</file>
+            <file>file:/C:/Users/I.A.T%20COMPUTERS%20LLC/Documents/NetBeansProjects/HotelManagementSystem/src/hotelmanagementsystem/ManagerLoginForm.java</file>
             <file>file:/C:/Users/I.A.T%20COMPUTERS%20LLC/Documents/NetBeansProjects/HotelManagementSystem/src/hotelmanagementsystem/delete_guest.java</file>
             <file>file:/C:/Users/I.A.T%20COMPUTERS%20LLC/Documents/NetBeansProjects/HotelManagementSystem/src/hotelmanagementsystem/RoomAssistanceRegistration.java</file>
-            <file>file:/C:/Users/I.A.T%20COMPUTERS%20LLC/Documents/NetBeansProjects/HotelManagementSystem/src/hotelmanagementsystem/Registration.java</file>
             <file>file:/C:/Users/I.A.T%20COMPUTERS%20LLC/Documents/NetBeansProjects/HotelManagementSystem/src/hotelmanagementsystem/DeleteRoom.java</file>
+            <file>file:/C:/Users/I.A.T%20COMPUTERS%20LLC/Documents/NetBeansProjects/HotelManagementSystem/src/hotelmanagementsystem/Admin.java</file>
             <file>file:/C:/Users/I.A.T%20COMPUTERS%20LLC/Documents/NetBeansProjects/HotelManagementSystem/src/hotelmanagementsystem/Index.java</file>
             <file>file:/C:/Users/I.A.T%20COMPUTERS%20LLC/Documents/NetBeansProjects/HotelManagementSystem/src/hotelmanagementsystem/User.java</file>
+            <file>file:/C:/Users/I.A.T%20COMPUTERS%20LLC/Documents/NetBeansProjects/HotelManagementSystem/src/hotelmanagementsystem/Employee.java</file>
+            <file>file:/C:/Users/I.A.T%20COMPUTERS%20LLC/Documents/NetBeansProjects/HotelManagementSystem/src/hotelmanagementsystem/ManagerDashboard.java</file>
             <file>file:/C:/Users/I.A.T%20COMPUTERS%20LLC/Documents/NetBeansProjects/HotelManagementSystem/src/hotelmanagementsystem/addRoom.java</file>
-            <file>file:/C:/Users/I.A.T%20COMPUTERS%20LLC/Documents/NetBeansProjects/HotelManagementSystem/src/hotelmanagementsystem/DeleteGuestdetails.java</file>
+            <file>file:/C:/Users/I.A.T%20COMPUTERS%20LLC/Documents/NetBeansProjects/HotelManagementSystem/src/hotelmanagementsystem/Email.java</file>
             <file>file:/C:/Users/I.A.T%20COMPUTERS%20LLC/Documents/NetBeansProjects/HotelManagementSystem/src/hotelmanagementsystem/LoginOptions.java</file>
             <file>file:/C:/Users/I.A.T%20COMPUTERS%20LLC/Documents/NetBeansProjects/HotelManagementSystem/src/hotelmanagementsystem/Guest.java</file>
-            <file>file:/C:/Users/I.A.T%20COMPUTERS%20LLC/Documents/NetBeansProjects/HotelManagementSystem/src/hotelmanagementsystem/roomInterface.java</file>
             <file>file:/C:/Users/I.A.T%20COMPUTERS%20LLC/Documents/NetBeansProjects/HotelManagementSystem/src/hotelmanagementsystem/Room.java</file>
             <file>file:/C:/Users/I.A.T%20COMPUTERS%20LLC/Documents/NetBeansProjects/HotelManagementSystem/src/hotelmanagementsystem/AdminstratorLoginForm.java</file>
             <file>file:/C:/Users/I.A.T%20COMPUTERS%20LLC/Documents/NetBeansProjects/HotelManagementSystem/src/hotelmanagementsystem/EditGuestDetaiils.java</file>

@@ -34,7 +34,7 @@ public class Admin extends User {
                 }
                 else
                 {
-                    JOptionPane.showMessageDialog(null, "Username and password does not match");
+                   JOptionPane.showMessageDialog(null, "Username and password does not match");
                     return false;
                 }   
                 

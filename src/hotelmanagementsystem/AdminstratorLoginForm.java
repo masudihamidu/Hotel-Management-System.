@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package hotelmanagementsystem;
-import java.sql.*;
 import javax.swing.JOptionPane;
 
 /**
@@ -119,13 +118,17 @@ public class AdminstratorLoginForm extends javax.swing.JFrame {
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         // TODO add your handling code here:
+        try{
         Admin admin = new Admin();
         String username = txtUserName.getText();
         String password = new String(txtPassword.getPassword());
         String sqlStatment = "SELECT * FROM admin WHERE username='"+username+"' AND password = '"+password+"'";
         
         admin.login(username, password, sqlStatment);
-       
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null, e);
+        }       
     }//GEN-LAST:event_btnLoginActionPerformed
 
     /**
