@@ -121,6 +121,8 @@ public class LoginOptions extends javax.swing.JFrame {
 
     private void btnHotelManagerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHotelManagerActionPerformed
         // TODO add your handling code here:
+        this.setVisible(false);
+        new ManagerLoginForm().setVisible(true);
     }//GEN-LAST:event_btnHotelManagerActionPerformed
 
     /**

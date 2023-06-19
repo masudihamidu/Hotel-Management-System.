@@ -8,6 +8,7 @@ package hotelmanagementsystem;
 import java.awt.event.KeyEvent;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -39,7 +40,7 @@ public class EditGuestDetaiils extends javax.swing.JFrame {
             }                                   
             
         } catch (SQLException ex) {
-            Logger.getLogger(Guest.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AddGuest.class.getName()).log(Level.SEVERE, null, ex);
         }          
         
        
@@ -146,6 +147,7 @@ public class EditGuestDetaiils extends javax.swing.JFrame {
         jLabel11.setText("Check_out_Date");
 
         btnAdd.setBackground(new java.awt.Color(0, 102, 153));
+        btnAdd.setIcon(new javax.swing.ImageIcon("C:\\Users\\I.A.T COMPUTERS LLC\\Documents\\NetBeansProjects\\HotelManagementSystem\\Save-icon.png")); // NOI18N
         btnAdd.setText("Edit");
         btnAdd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -154,6 +156,7 @@ public class EditGuestDetaiils extends javax.swing.JFrame {
         });
 
         jButton1.setBackground(new java.awt.Color(255, 153, 153));
+        jButton1.setIcon(new javax.swing.ImageIcon("C:\\Users\\I.A.T COMPUTERS LLC\\Documents\\NetBeansProjects\\HotelManagementSystem\\erase-128.png")); // NOI18N
         jButton1.setText("Cancel");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -353,7 +356,9 @@ public class EditGuestDetaiils extends javax.swing.JFrame {
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         // TODO add your handling code here:
-        String sqlQuery = "Update guest set firstname='"+txtFname.getText()+"'"+", "
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+           try { 
+               String sqlQuery = "Update guest set firstname='"+txtFname.getText()+"'"+", "
                 + "lastname='"+txtLastName.getText()+"', "
                 + "nationality='"+txtNationality.getText()+"',"
                 + "phoneNumber = '"+txtPhoneNumber.getText()+"',"
@@ -361,9 +366,9 @@ public class EditGuestDetaiils extends javax.swing.JFrame {
                 + "gender='"+cmbGender.getSelectedItem()+"', "
                 + "roomNumber = '"+cmbRoomNumber.getSelectedItem()+"',"
                 + "roomType = '"+cmbRoomType.getSelectedItem()+"',"
-                + "check_out_date = '"+dateChooser.getDate()+"',"
-                + " where nidaId="+txtNida_ID.getText();
-        try {
+                + "check_out_date = '"+dateFormat.format(dateChooser.getDate())+"' WHERE nidaId="+txtNida_ID.getText();
+      
+            
             conn.statment.executeUpdate(sqlQuery);
             this.setVisible(false);
             new RoomAssistanceDashboard().setVisible(true);
@@ -404,10 +409,8 @@ public class EditGuestDetaiils extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new EditGuestDetaiils().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new EditGuestDetaiils().setVisible(true);
         });
     }
 

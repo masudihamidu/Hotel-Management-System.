@@ -5,12 +5,10 @@
  */
 package hotelmanagementsystem;
 
-import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -20,7 +18,7 @@ import javax.swing.table.DefaultTableModel;
 public class RoomAssistanceDashboard extends javax.swing.JFrame {
     DBConnection conn = new DBConnection();
     Room room = new Room();
-    GuestDetails guestDetails = new GuestDetails();
+    Guest guestDetails = new Guest();
                 
     /**
      * Creates new form RoomAssistanceDashboard
@@ -77,7 +75,6 @@ public class RoomAssistanceDashboard extends javax.swing.JFrame {
         btnLogout = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tableData = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu2 = new javax.swing.JMenu();
         jMenu3 = new javax.swing.JMenu();
@@ -85,6 +82,7 @@ public class RoomAssistanceDashboard extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        btnLogout.setBackground(new java.awt.Color(255, 102, 102));
         btnLogout.setIcon(new javax.swing.ImageIcon("C:\\Users\\I.A.T COMPUTERS LLC\\Documents\\NetBeansProjects\\HotelManagementSystem\\logout.png")); // NOI18N
         btnLogout.setText("Logout");
         btnLogout.addActionListener(new java.awt.event.ActionListener() {
@@ -103,14 +101,8 @@ public class RoomAssistanceDashboard extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tableData);
 
-        jButton1.setText("jButton1");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
         jMenu2.setText("Edit");
+        jMenu2.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jMenu2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jMenu2MouseClicked(evt);
@@ -119,6 +111,7 @@ public class RoomAssistanceDashboard extends javax.swing.JFrame {
         jMenuBar1.add(jMenu2);
 
         jMenu3.setText("Delete");
+        jMenu3.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jMenu3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jMenu3MouseClicked(evt);
@@ -127,6 +120,7 @@ public class RoomAssistanceDashboard extends javax.swing.JFrame {
         jMenuBar1.add(jMenu3);
 
         lblMenu.setText("Add");
+        lblMenu.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         lblMenu.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblMenuMouseClicked(evt);
@@ -141,26 +135,20 @@ public class RoomAssistanceDashboard extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1070, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(97, 97, 97)
-                        .addComponent(jButton1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1070, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(btnLogout)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnLogout)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jButton1)))
-                .addGap(27, 27, 27)
+                .addContainerGap()
+                .addComponent(btnLogout)
+                .addGap(22, 22, 22)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
@@ -171,7 +159,7 @@ public class RoomAssistanceDashboard extends javax.swing.JFrame {
     private void lblMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMenuMouseClicked
         // TODO add your handling code here:
         this.setVisible(false);
-       new Guest().setVisible(true);
+       new AddGuest().setVisible(true);
     }//GEN-LAST:event_lblMenuMouseClicked
 
     private void jMenu3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu3MouseClicked
@@ -192,27 +180,6 @@ public class RoomAssistanceDashboard extends javax.swing.JFrame {
         this.setVisible(false);
         new RoomAssistanceLogin().setVisible(true);
     }//GEN-LAST:event_btnLogoutActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        DefaultTableModel model = (DefaultTableModel) tableData.getModel();
-        try{
-        
-                
-                int[] updadedRow = conn.statment.executeBatch();
-                JOptionPane.showMessageDialog(null,updadedRow.length );                
-            } catch(NumberFormatException | SQLException e){
-                JOptionPane.showMessageDialog(null, e);
-            }
-          
-           
-                
-            
-        
-            
-
-        
-    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -251,7 +218,6 @@ public class RoomAssistanceDashboard extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLogout;
-    private javax.swing.JButton jButton1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;

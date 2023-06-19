@@ -5,10 +5,13 @@
  */
 package hotelmanagementsystem;
 
+import java.awt.print.PrinterException;
 import java.sql.*;
+import java.text.MessageFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -62,7 +65,7 @@ public class AdminstratorDashboard extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tableData = new javax.swing.JTable();
-        jButton3 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
         menuBar = new javax.swing.JMenuBar();
         menuAddRoom = new javax.swing.JMenu();
         menuEditRoom = new javax.swing.JMenu();
@@ -70,6 +73,7 @@ public class AdminstratorDashboard extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jButton1.setBackground(new java.awt.Color(255, 102, 102));
         jButton1.setIcon(new javax.swing.ImageIcon("C:\\Users\\I.A.T COMPUTERS LLC\\Documents\\NetBeansProjects\\HotelManagementSystem\\logout.png")); // NOI18N
         jButton1.setText("logout");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -85,17 +89,31 @@ public class AdminstratorDashboard extends javax.swing.JFrame {
             new String [] {
                 "Room number", "Room amount", "Room type"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(tableData);
 
-        jButton3.setText("Delete");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        jButton2.setText("jButton2");
+        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton2MouseClicked(evt);
+            }
+        });
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                jButton2ActionPerformed(evt);
             }
         });
 
         menuAddRoom.setText("Add room");
+        menuAddRoom.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         menuAddRoom.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 menuAddRoomMouseClicked(evt);
@@ -109,9 +127,16 @@ public class AdminstratorDashboard extends javax.swing.JFrame {
         menuBar.add(menuAddRoom);
 
         menuEditRoom.setText("Edit room");
+        menuEditRoom.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        menuEditRoom.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                menuEditRoomMouseClicked(evt);
+            }
+        });
         menuBar.add(menuEditRoom);
 
         menuDeleteRoom.setText("Delete room");
+        menuDeleteRoom.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         menuDeleteRoom.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 menuDeleteRoomMouseClicked(evt);
@@ -126,29 +151,27 @@ public class AdminstratorDashboard extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 713, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 678, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 24, Short.MAX_VALUE)))
+                        .addComponent(jButton1)))
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addComponent(jButton3)
+                .addGap(298, 298, 298)
+                .addComponent(jButton2)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(jButton1)
-                .addGap(9, 9, 9)
-                .addComponent(jButton3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(34, 34, 34)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 391, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(50, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jButton2)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -176,25 +199,31 @@ public class AdminstratorDashboard extends javax.swing.JFrame {
     private void menuDeleteRoomMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuDeleteRoomMouseClicked
         // TODO add your handling code here:
        new DeleteRoom().setVisible(true);
+       this.setVisible(false);
        
     }//GEN-LAST:event_menuDeleteRoomMouseClicked
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-                    // TODO add your handling code here:
-            DBConnection conn = new DBConnection();
-                        
-            try {
-            int row = tableData.getSelectedRow();
-            String value = (tableData.getModel().getValueAt(row, 0).toString());
-            String sqlQuery = "DELETE FROM room WHERE roomNumber = '"+value+"'";
-            conn.statment.executeUpdate(sqlQuery);
-            DefaultTableModel model = (DefaultTableModel)tableData.getModel();
-            JOptionPane.showMessageDialog(null,"Data deleted successfully");
-        } catch (SQLException ex) {
-            Logger.getLogger(AdminstratorDashboard.class.getName()).log(Level.SEVERE, null, ex);
+    private void menuEditRoomMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuEditRoomMouseClicked
+        // TODO add your handling code here:
+        this.setVisible(false);
+        new EditRoomDetails().setVisible(true);
+    }//GEN-LAST:event_menuEditRoomMouseClicked
+
+    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+        // TODO add your handling code here:
+        MessageFormat header = new MessageFormat("Hotel management system\n");
+        MessageFormat footer = new MessageFormat("Hotel management system 2023");
+        try{
+           tableData.print(JTable.PrintMode.FIT_WIDTH,header,footer);
+            
+        }catch(PrinterException e){
+            JOptionPane.showMessageDialog(null, "Cannot be print !");
         }
-        
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_jButton2MouseClicked
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -212,28 +241,22 @@ public class AdminstratorDashboard extends javax.swing.JFrame {
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AdminstratorDashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AdminstratorDashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AdminstratorDashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(AdminstratorDashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        
+        //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new AdminstratorDashboard().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new AdminstratorDashboard().setVisible(true);
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JMenu menuAddRoom;
     private javax.swing.JMenuBar menuBar;

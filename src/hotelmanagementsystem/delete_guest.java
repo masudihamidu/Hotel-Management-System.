@@ -5,19 +5,26 @@
  */
 package hotelmanagementsystem;
 
+import java.awt.event.KeyEvent;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author I.A.T COMPUTERS LLC
  */
 public class delete_guest extends javax.swing.JFrame {
-
+DBConnection conn = new DBConnection();
     /**
      * Creates new form delete_guest
      */
     public delete_guest() {
         initComponents();
         this.setLocationRelativeTo(null);
-        this.setTitle("Delete room");
+        this.setTitle("Delete guest");
     }
 
     /**
@@ -42,15 +49,26 @@ public class delete_guest extends javax.swing.JFrame {
                 txtNida_IDActionPerformed(evt);
             }
         });
+        txtNida_ID.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtNida_IDKeyPressed(evt);
+            }
+        });
 
         btnDelete.setBackground(new java.awt.Color(255, 102, 102));
         btnDelete.setText("Delete");
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("Nida_ID");
 
-        jLabel2.setText("Delete Room");
+        jLabel2.setText("Delete guest");
 
         btnCancel.setBackground(new java.awt.Color(255, 153, 153));
+        btnCancel.setIcon(new javax.swing.ImageIcon("C:\\Users\\I.A.T COMPUTERS LLC\\Documents\\NetBeansProjects\\HotelManagementSystem\\erase-128.png")); // NOI18N
         btnCancel.setText("Cancel");
         btnCancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -62,10 +80,6 @@ public class delete_guest extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(121, 121, 121))
             .addGroup(layout.createSequentialGroup()
                 .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -76,6 +90,10 @@ public class delete_guest extends javax.swing.JFrame {
                         .addGap(44, 44, 44)
                         .addComponent(txtNida_ID, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(24, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(105, 105, 105))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -107,6 +125,41 @@ public class delete_guest extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_btnCancelActionPerformed
+
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+        // TODO add your handling code here:
+        Guest guest = new Guest();
+        try{
+        String nidaId = txtNida_ID.getText();
+        String sqlQuery = "DELETE FROM guest WHERE nidaId = '"+nidaId+"'";
+        guest.deleteRoom(nidaId, sqlQuery);
+        }
+        catch(NumberFormatException e){
+            JOptionPane.showMessageDialog(null, "Provide numeric value");
+        }
+    }//GEN-LAST:event_btnDeleteActionPerformed
+
+    private void txtNida_IDKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNida_IDKeyPressed
+        // TODO add your handling code here:
+        
+           if(evt.getKeyCode() == KeyEvent.VK_ENTER ){
+             String nidaId = txtNida_ID.getText();
+             
+            try {
+                
+                String sqlStatment = "SELECT * FROM guest WHERE nidaId = '"+nidaId+"'";
+                ResultSet result = conn.statment.executeQuery(sqlStatment);
+                                 
+                if(result.next() == false){
+                     JOptionPane.showMessageDialog(this, "inda number not found");
+                     
+                 }
+                                 
+            } catch (SQLException ex) {
+                Logger.getLogger(EditGuestDetaiils.class.getName()).log(Level.SEVERE, null, ex);
+            }
+         }
+    }//GEN-LAST:event_txtNida_IDKeyPressed
 
     /**
      * @param args the command line arguments

@@ -72,6 +72,7 @@ public class RoomAssistanceRegistration extends javax.swing.JFrame {
         jLabel7.setText("Password");
 
         btnRegistry.setBackground(new java.awt.Color(0, 102, 153));
+        btnRegistry.setIcon(new javax.swing.ImageIcon("C:\\Users\\I.A.T COMPUTERS LLC\\Documents\\NetBeansProjects\\HotelManagementSystem\\Save-icon.png")); // NOI18N
         btnRegistry.setText("Registry");
         btnRegistry.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -80,6 +81,7 @@ public class RoomAssistanceRegistration extends javax.swing.JFrame {
         });
 
         btnCancel.setBackground(new java.awt.Color(255, 153, 153));
+        btnCancel.setIcon(new javax.swing.ImageIcon("C:\\Users\\I.A.T COMPUTERS LLC\\Documents\\NetBeansProjects\\HotelManagementSystem\\erase-128.png")); // NOI18N
         btnCancel.setText("Cancel");
         btnCancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -197,12 +199,12 @@ public class RoomAssistanceRegistration extends javax.swing.JFrame {
 
     private void btnRegistryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistryActionPerformed
         // TODO add your handling code here:
-//      DBConnection conn = new DBConnection(); //instance of database connection
       
-      Registration registrationDetails = new Registration(); //instance of registration class
+      Employee registrationDetails = new Employee(); //instance of registration class
   
         try {
             registrationDetails.register(txtFirstName.getText(), txtLastName.getText(),(String) cmbGender.getSelectedItem(),txtRegistrationNumber.getText(), txtEmail.getText(),(String)cmbGender.getSelectedItem() , txtPhonenumber.getText());
+            this.setVisible(false);
         } catch (SQLException ex) {
             Logger.getLogger(RoomAssistanceRegistration.class.getName()).log(Level.SEVERE, null, ex);
         }
