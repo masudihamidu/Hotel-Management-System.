@@ -78,6 +78,17 @@ class Guest extends Employee{
             boolean b = conn.statment.execute(sqlQuery);
             if(!b){
                 JOptionPane.showMessageDialog(null, "Data inserted successful");
+                String senderEmail = "masudihmfaume@gmail.com";
+                String senderPassword = "vmtx xvwg syrq mvex";
+                String host = "smtp.gmail.com";
+                String port = "587";
+
+                Email emailSender = new Email(senderEmail, senderPassword, host, port);
+                String subject = "Welcome to our hotel!";
+                String messageContent = "Dear " + firstname + " "+ lastname+",\n\nWelcome to Hotel ABC\n "
+                        + "Your selected room :" +roomNumber+"\n Check in date : "+check_in_date+"\nCheck out date :"+check_out_date;
+
+                emailSender.sendEmail(email, subject, messageContent);
                 return true;               
             }
             else{
