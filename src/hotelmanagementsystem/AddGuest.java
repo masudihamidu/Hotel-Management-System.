@@ -278,7 +278,7 @@ public class AddGuest extends javax.swing.JFrame {
         String checkInDate = dateFormat.format(txtCheckInDate.getDate());
         String checkOutDate = dateFormat.format(txtCheckOutDate.getDate());
         
-//        String sqlQuery = "INSERT INTO guest(firstname,lastname,nidaId,nationality,phoneNumber,email,gender,roomNumber,roomType,check_in_date,check_out_date) VALUES('"+guestDetails.getUsername()+"','"+guestDetails.getLastName()+"','"+guestDetails.getId()+"', '"+guestDetails.getNationality()+"','"+guestDetails.getPhoneNumber()+"','"+guestDetails.getEmail() +"','"+guestDetails.getGender()+"','"+room.getRoomNumber()+"','"+room.getRoomType()+"','"+checkInDate+"','"+checkOutDate+"')";
+        String sqlQuery = "INSERT INTO guest(firstname,lastname,nidaId,nationality,phoneNumber,email,gender,roomNumber,roomType,check_in_date,check_out_date) VALUES('"+guestDetails.getUsername()+"','"+guestDetails.getLastName()+"','"+guestDetails.getId()+"', '"+guestDetails.getNationality()+"','"+guestDetails.getPhoneNumber()+"','"+guestDetails.getEmail() +"','"+guestDetails.getGender()+"','"+room.getRoomNumber()+"','"+room.getRoomType()+"','"+checkInDate+"','"+checkOutDate+"')";
 //        GuestDetails guest = new GuestDetails();
 //        guest.addGuest(txtFirstName.getText(),txtLastName.getText(),txtNida.getText(),txtNationality.getText(),txtEmail.getText(),(String)cmbGender.getSelectedItem(),txtPhoneNumber.getText(),(String) cmbRoomNumber.getSelectedItem(),(String)cmbRoomType.getSelectedItem(),dateFormat.format(txtCheckInDate.getDate()),dateFormat.format(txtCheckOutDate.getDate()),sqlQuery);
         

@@ -65,7 +65,6 @@ public class AdminstratorDashboard extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tableData = new javax.swing.JTable();
-        jButton2 = new javax.swing.JButton();
         menuBar = new javax.swing.JMenuBar();
         menuAddRoom = new javax.swing.JMenu();
         menuEditRoom = new javax.swing.JMenu();
@@ -99,18 +98,6 @@ public class AdminstratorDashboard extends javax.swing.JFrame {
             }
         });
         jScrollPane1.setViewportView(tableData);
-
-        jButton2.setText("jButton2");
-        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton2MouseClicked(evt);
-            }
-        });
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
 
         menuAddRoom.setText("Add room");
         menuAddRoom.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
@@ -157,10 +144,6 @@ public class AdminstratorDashboard extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jButton1)))
                 .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(298, 298, 298)
-                .addComponent(jButton2)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -169,9 +152,7 @@ public class AdminstratorDashboard extends javax.swing.JFrame {
                 .addComponent(jButton1)
                 .addGap(34, 34, 34)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 391, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButton2)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(54, Short.MAX_VALUE))
         );
 
         pack();
@@ -209,22 +190,6 @@ public class AdminstratorDashboard extends javax.swing.JFrame {
         new EditRoomDetails().setVisible(true);
     }//GEN-LAST:event_menuEditRoomMouseClicked
 
-    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
-        // TODO add your handling code here:
-        MessageFormat header = new MessageFormat("Hotel management system\n");
-        MessageFormat footer = new MessageFormat("Hotel management system 2023");
-        try{
-           tableData.print(JTable.PrintMode.FIT_WIDTH,header,footer);
-            
-        }catch(PrinterException e){
-            JOptionPane.showMessageDialog(null, "Cannot be print !");
-        }
-    }//GEN-LAST:event_jButton2MouseClicked
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -256,7 +221,6 @@ public class AdminstratorDashboard extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JMenu menuAddRoom;
     private javax.swing.JMenuBar menuBar;

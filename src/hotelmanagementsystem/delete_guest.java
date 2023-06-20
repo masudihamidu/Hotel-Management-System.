@@ -132,6 +132,8 @@ DBConnection conn = new DBConnection();
         try{
         String nidaId = txtNida_ID.getText();
         String sqlQuery = "DELETE FROM guest WHERE nidaId = '"+nidaId+"'";
+        
+//        invoke delete room function
         guest.deleteRoom(nidaId, sqlQuery);
         }
         catch(NumberFormatException e){

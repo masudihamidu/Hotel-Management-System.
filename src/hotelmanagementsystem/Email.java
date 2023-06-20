@@ -15,7 +15,7 @@ import javax.mail.internet.MimeMessage;
  * @author I.A.T COMPUTERS LLC
  */
 public class Email {
-     private final String senderEmail;
+    private final String senderEmail;
     private final String senderPassword;
     private final String host;
     private final String port;
@@ -40,6 +40,7 @@ public class Email {
         });
     }
 
+//    ==================== function for recipient email ===================================
     public void sendEmail(String recipientEmail, String subject, String messageContent) {
         try {
             Message message = new MimeMessage(session);
@@ -55,5 +56,6 @@ public class Email {
             System.out.println("Failed to send email to " + recipientEmail + ". Error: " + e.getMessage());
         }
     }
+//    ====================== end function for recipient email =============================
     
 }
