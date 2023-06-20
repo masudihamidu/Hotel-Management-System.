@@ -11,6 +11,7 @@ import javax.swing.JOptionPane;
  *
  * @author I.A.T COMPUTERS LLC
  */
+
 public class ManagerLoginForm extends javax.swing.JFrame {
 
     /**
@@ -110,12 +111,12 @@ public class ManagerLoginForm extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         try{
-        Admin admin = new Admin();
+        Manager manager = new Manager();
         String username = txtUsername.getText();
         String password = new String(txtPassword.getPassword());
         String sqlStatment = "SELECT * FROM admin WHERE username='"+username+"' AND password = '"+password+"'";
         
-        admin.login(username, password, sqlStatment);
+        manager.login(username, password, sqlStatment);
         }
         catch(Exception e){
             JOptionPane.showMessageDialog(null, e);

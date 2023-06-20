@@ -142,10 +142,11 @@ public class addRoom extends javax.swing.JFrame {
         Room room = new Room();
         try{
         String sqlQuery = "INSERT INTO room(roomNumber,room_amount,roomType) VALUES ('"+Integer.parseInt(txtRoomNumber.getText())+"','"+Double.parseDouble(txtRoomAmount.getText())+"', '"+ cmbRoomType.getSelectedItem()+"')";
-        room.addRoom(Integer.parseInt(txtRoomNumber.getText()),
-                Double.parseDouble(txtRoomAmount.getText()),
-                (String) cmbRoomType.getSelectedItem(),sqlQuery);
+        
+//        invoke add room function
+        room.addRoom(Integer.parseInt(txtRoomNumber.getText()),Double.parseDouble(txtRoomAmount.getText()),(String) cmbRoomType.getSelectedItem(),sqlQuery);
         }
+        
         catch(NumberFormatException e){
             JOptionPane.showMessageDialog(null, "Please provide numeric values");
         }
