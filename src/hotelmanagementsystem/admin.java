@@ -46,4 +46,78 @@ public class Admin extends User {
         return false;
     }
     
+    DBConnection conn = new DBConnection();
+    Room room = new Room();
+    
+    //    =================== function for add room =====================================
+    public boolean addRoom(int roomNumber, Double roomAmount, String roomType, String sqlQuery){
+        room.setRoomNumber(roomNumber);
+        room.setRoomAmount(roomAmount);
+        room.setRoomType(roomType);
+       
+        try{
+            boolean b = conn.statment.execute(sqlQuery);
+            if(!b){
+                JOptionPane.showMessageDialog(null, "Data inserted successful");
+                return true;               
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "Ensure inserted data are correctly");
+            }                       
+        }
+        catch(HeadlessException | SQLException e){
+            JOptionPane.showMessageDialog(null, e);
+        }
+        return false;
+        
+    } 
+      //    =================== end function for add room ====================================
+    
+    
+    //   ================= function for delete room ===================================
+    public boolean deleteRoom(int roomNumber, String sqlQuery){
+        room.setRoomNumber(roomNumber);
+        try{
+            boolean b = conn.statment.execute(sqlQuery);
+            if(!b){
+                JOptionPane.showMessageDialog(null, "Data deleted successful");
+                return true;               
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "Ensure data you want delete are correctly");
+            }                       
+        }
+        catch(HeadlessException | SQLException e){
+            JOptionPane.showMessageDialog(null, e);
+        }
+        return false;   
+    }   
+    
+//    ================= end of function delete of room details =====================
+    
+    
+//   =================== function edit of room details =============================
+    
+     public boolean editRoom(Double roomAmount, String roomType, String sqlQuery){
+        room.setRoomAmount(roomAmount);
+        room.setRoomType(roomType);
+        try{
+            boolean b = conn.statment.execute(sqlQuery);
+            if(!b){
+                JOptionPane.showMessageDialog(null, "Data edited successful");
+                return true;               
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "Ensure data you want to edits are correctly");
+            }                       
+        }
+        catch(HeadlessException | SQLException e){
+            JOptionPane.showMessageDialog(null, e);
+        }
+        return false;   
+    }
+     
+//     =================== end function of edit room details ==========================
+    
+   
 }

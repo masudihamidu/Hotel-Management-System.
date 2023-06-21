@@ -22,18 +22,11 @@ public class User{
     private String gender;
     private String id;
     
-    User(){
-        
+   public User(){
+       
     }
     
-    User(String username, String password, String gender, String id){
-        this.username = username;
-        this.password = password;
-        this.gender = gender;
-        this.id = id;
-    }
-   
-    
+      
 //    parameter to set useraname
   public void setUsername(String username){
         this.username = username;
@@ -45,12 +38,12 @@ public class User{
     }
     
 //    parameter to set password
-    void setPassword(String password){
+    public void setPassword(String password){
         this.password = password;
     }
     
 //    return password
-    String getPassword(){
+    public String getPassword(){
         return password;
     }
     
@@ -95,8 +88,8 @@ public class User{
 //    login method that accept three parameters for username, password, and sql statement
     public boolean login(String username, String password, String sqlStatement){
         DBConnection conn = new DBConnection();
-        this.username = username;
-        this.password = password;
+        this.setUsername(username); 
+        this.setPassword(password);
         
         try{
             ResultSet result = conn.statment.executeQuery(sqlStatement);
@@ -104,7 +97,7 @@ public class User{
                 String uname = result.getString("firstname");
                 String pwd = result.getString("password");
                 
-                if((this.username.equals(uname)) && (this.password.equals(pwd))){  
+                if((username.equals(uname)) && (password.equals(pwd))){  
                   new RoomAssistanceDashboard().setVisible(true); 
                   return true;
                 }

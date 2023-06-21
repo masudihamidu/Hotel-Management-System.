@@ -116,11 +116,11 @@ DBConnection conn = new DBConnection();
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
-        Room room = new Room();
+        Admin admin = new Admin();
         try{
         int roomNumber = Integer.parseInt(txtRoomNumber.getText());
         String sqlQuery = "DELETE FROM room WHERE roomNumber = '"+roomNumber+"'";
-        room.deleteRoom(roomNumber, sqlQuery);
+        admin.deleteRoom(roomNumber, sqlQuery);
         }
         catch(NumberFormatException e){
             JOptionPane.showMessageDialog(null, "Provide numeric value");

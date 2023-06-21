@@ -16,14 +16,10 @@ import javax.swing.JOptionPane;
  */
 public class Employee extends User {
     private String lastName;
-    private String registrationNumber;
     private String email;
     private String phoneNumber;
         
-    Employee(){
-        
-    }
-        
+ 
       
     public void setLastName(String lastName){
         this.lastName = lastName;
@@ -32,16 +28,7 @@ public class Employee extends User {
      public String getLastName(){
         return lastName;
     }
-       
-    public void setRegistrationNumber(String registrationNumber){
-        this.registrationNumber = registrationNumber;
         
-    }
-    
-    public String getRegistrationNumber(){
-        return registrationNumber;
-    }
-    
     public void setEmail(String email){
         this.email = email;
     }
@@ -64,10 +51,11 @@ public class Employee extends User {
         this.setLastName(lastname);
         this.setGender(gender);
         this.setEmail(email);
-        this.setRegistrationNumber(registrationNumber);
+        this.setId(registrationNumber);
         this.setPhoneNumber(phoneNumber);
         this.setPassword(encryption(password));                         
-//              
+
+        
 //    check username is empty    
         if(username.isEmpty()){
             JOptionPane.showMessageDialog(null, "Please provide firstname");   
@@ -116,18 +104,12 @@ public class Employee extends User {
             return registrationSuccess;
         }
         
-//        check password length
-        if (password.isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Please provide password.", "Registration Error", JOptionPane.ERROR_MESSAGE);
-            return registrationSuccess;
-        }
 
 //        Database connection nad registration logic
         DBConnection conn = new DBConnection();
-//        Registration registrationDetails = new Registration();
                 
         try{            
-            boolean b = conn.statment.execute("INSERT INTO roomassistance(firstname,lastname,gender,registrationNumber,email,phoneNumber,password) VALUES('"+this.getUsername()+"','"+this.getLastName()+"','"+this.getGender()+"','"+getRegistrationNumber()+"','"+getEmail()+"','"+getPhoneNumber()+"','"+getPassword()+"')");
+            boolean b = conn.statment.execute("INSERT INTO roomassistance(firstname,lastname,gender,registrationNumber,email,phoneNumber,password) VALUES('"+this.getUsername()+"','"+this.getLastName()+"','"+this.getGender()+"','"+this.getId()+"','"+getEmail()+"','"+getPhoneNumber()+"','"+getPassword()+"')");
             if(!b){
                 JOptionPane.showMessageDialog(null, "Your registered successful");
                 new RoomAssistanceLogin().setVisible(true);
@@ -138,8 +120,8 @@ public class Employee extends User {
 
                 Email emailSender = new Email(senderEmail, senderPassword, host, port);
                 String subject = "Welcome to our platform!";
-                String messageContent = "Dear " + username + " "+ lastname+",\n\nWelcome to hotel management system, that system\n assist you to insert new guest, delete and modify\n"
-                        + " guest details.\n\n ! Thank you for registering.";
+                String messageContent = "Dear " + username + " "+ lastname+",\n\nWelcome to hotel management system, that system\nassist you to insert new guest, delete and modify\n"
+                        + " guest details.\n\n! Thank you for registering.";
 
                 emailSender.sendEmail(email, subject, messageContent);
             }

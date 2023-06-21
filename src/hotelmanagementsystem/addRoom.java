@@ -139,12 +139,12 @@ public class addRoom extends javax.swing.JFrame {
 
     private void btnAddRoomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddRoomActionPerformed
         // TODO add your handling code here:           
-        Room room = new Room();
+        Admin admin = new Admin();
         try{
         String sqlQuery = "INSERT INTO room(roomNumber,room_amount,roomType) VALUES ('"+Integer.parseInt(txtRoomNumber.getText())+"','"+Double.parseDouble(txtRoomAmount.getText())+"', '"+ cmbRoomType.getSelectedItem()+"')";
         
 //        invoke add room function
-        room.addRoom(Integer.parseInt(txtRoomNumber.getText()),Double.parseDouble(txtRoomAmount.getText()),(String) cmbRoomType.getSelectedItem(),sqlQuery);
+        admin.addRoom(Integer.parseInt(txtRoomNumber.getText()),Double.parseDouble(txtRoomAmount.getText()),(String) cmbRoomType.getSelectedItem(),sqlQuery);
         }
         
         catch(NumberFormatException e){
