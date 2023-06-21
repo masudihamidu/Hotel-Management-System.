@@ -173,11 +173,11 @@ DBConnection conn = new DBConnection();
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        Room room =  new Room();
+        Admin admin =  new Admin();
         try{
             
         String sqlQuery="UPDATE room SET room_amount = '"+Double.parseDouble(txtRoomAmount.getText())+"', roomType = '"+(String)cmbRoomType.getSelectedItem()+"' WHERE roomNumber=" + Integer.parseInt(txtRoomNumber.getText());
-        room.editRoom(Double.parseDouble(txtRoomAmount.getText()),(String)cmbRoomType.getSelectedItem(),sqlQuery);
+        admin.editRoom(Double.parseDouble(txtRoomAmount.getText()),(String)cmbRoomType.getSelectedItem(),sqlQuery);
         
         }
         catch(NumberFormatException e){
