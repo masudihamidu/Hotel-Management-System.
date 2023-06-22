@@ -28,10 +28,13 @@ public class RoomAssistanceDashboard extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         this.setTitle("Room assistance dashboard");
                
-        String sqlQuery = "SELECT firstname,lastname,nidaId,nationality,phoneNumber,email,gender,roomNumber,roomType,check_in_date,check_out_date, DATEDIFF(check_in_date,check_out_date) AS bill FROM guest";
+        String sqlQuery = "SELECT firstname,lastname,nidaId,nationality,phoneNumber,email,"
+                + "gender,guest.roomNumber,guest.roomType,check_in_date,check_out_date,"
+                + " DATEDIFF(check_out_date,check_in_date) * room_amount AS bill FROM guest JOIN room ON guest.roomNumber = room.roomNumber";
         
         try {
             ResultSet result = conn.statment.executeQuery(sqlQuery);
+            DefaultTableModel tableModel = (DefaultTableModel) tableData.getModel();
             while(result.next()) //data will be added while the true
             {
                 guestDetails.setUsername(result.getString("firstname"));
@@ -45,17 +48,20 @@ public class RoomAssistanceDashboard extends javax.swing.JFrame {
                 room.setRoomType(result.getString("roomType"));
                 guestDetails.setCheck_in_date(result.getDate("check_in_date")); 
                 guestDetails.setCheck_out_date(result.getDate("check_out_date")); 
-             
-                String ArraytableData[] = {guestDetails.getUsername(),guestDetails.getLastName(),guestDetails.getId(),guestDetails.getNationality(),guestDetails.getPhoneNumber(),guestDetails.getEmail(),
-                                           guestDetails.getGender(), String.valueOf(room.getRoomNumber()),
+                int dateDiff = result.getInt("bill");
+                Object ArraytableData[] = {guestDetails.getUsername(),guestDetails.getLastName(),guestDetails.getId(),guestDetails.getNationality(),guestDetails.getPhoneNumber(),guestDetails.getEmail(),
+                                           guestDetails.getGender(),
+                                           String.valueOf(room.getRoomNumber()),
                                            room.getRoomType(),
                                            String.valueOf(guestDetails.getCheck_in_date()),
-                                           String.valueOf(guestDetails.check_out_date)};
-                
-                DefaultTableModel tableModel = (DefaultTableModel) tableData.getModel();
+                                           String.valueOf(guestDetails.check_out_date),
+                                           String.valueOf(dateDiff)
+                        
+                                           };                
                 
 //                add array data table into table
                 tableModel.addRow(ArraytableData);
+               
             }   
             
         } catch (SQLException ex) {

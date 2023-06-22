@@ -20,17 +20,11 @@ class Guest extends Employee{
     Date check_in_date;
     Date check_out_date;
     
-    
     Guest(){
     
     }
     
-    Guest(String nationality, Date checkInDate, Date checkOutDate){
-        this.nationality = nationality;
-        this.check_in_date = checkInDate;
-        this.check_out_date = checkOutDate;
-    }
-    
+ 
     public void setNationality(String nationality){
         this.nationality = nationality;
     }
@@ -59,21 +53,22 @@ class Guest extends Employee{
     DBConnection conn = new DBConnection();    
     
 //    ================== add guest details function ===================================    
-    public boolean addGuest(String firstname, String lastname, String nidaId, String nationality, String email, String gender,String phoneNumber,int roomNumber,String roomType,Date checkInDate, Date checkOutDate,String sqlQuery){
+    public boolean addGuest(String firstname, String lastname, String nidaId, String nationality, String phoneNumber, String email,String gender,int roomNumber,String roomType,Date checkInDate, Date checkOutDate, String sqlQuery){
         Room room = new Room();
-        setUsername(firstname);
-        setLastName(lastname);
-        setId(nidaId);
-        setNationality(nationality);
-        setEmail(email);
-        setGender(gender);
-        setPhoneNumber(phoneNumber);
+        this.setUsername(firstname);
+        this.setLastName(lastname);
+        this.setId(nidaId);
+        this.setNationality(nationality);
+        this.setEmail(email);
+        this.setGender(gender);
+        this.setPhoneNumber(phoneNumber);
         room.setRoomNumber(roomNumber);
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         room.setRoomType(roomType);
-        setCheck_in_date(check_in_date);
-        setCheck_out_date(check_out_date);
-       
+        
+        dateFormat.format(check_in_date);
+        dateFormat.format(check_out_date);
+                 
         try{
             boolean b = conn.statment.execute(sqlQuery);
             if(!b){

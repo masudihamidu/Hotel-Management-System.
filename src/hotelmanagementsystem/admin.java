@@ -18,7 +18,7 @@ public class Admin extends User {
     
     @Override
     public boolean login(String username, String password, String sqlStatement){
-        DBConnection conn = new DBConnection();
+//        DBConnection conn = new DBConnection();
         this.setUsername(username);
         this.setPassword(password);
         

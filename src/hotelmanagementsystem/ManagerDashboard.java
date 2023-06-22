@@ -31,7 +31,9 @@ Room room = new Room();
         this.setTitle("Room assistance dashboard");
         this.setLocationRelativeTo(null);
         
-          String sqlQuery = "SELECT firstname,lastname,nidaId,nationality,phoneNumber,email,gender,roomNumber,roomType,check_in_date,check_out_date, DATEDIFF(check_in_date,check_out_date) AS bill FROM guest";
+          String sqlQuery = "SELECT firstname,lastname,nidaId,nationality,phoneNumber,email,"
+                + "gender,guest.roomNumber,guest.roomType,check_in_date,check_out_date,"
+                + " DATEDIFF(check_out_date,check_in_date) * room_amount AS bill FROM guest JOIN room ON guest.roomNumber = room.roomNumber";
         
         try {
             ResultSet result = conn.statment.executeQuery(sqlQuery);
@@ -47,13 +49,15 @@ Room room = new Room();
                 room.setRoomNumber(result.getInt("roomNumber"));
                 room.setRoomType(result.getString("roomType"));
                 guestDetails.setCheck_in_date(result.getDate("check_in_date")); 
-                guestDetails.setCheck_out_date(result.getDate("check_out_date")); 
+                guestDetails.setCheck_out_date(result.getDate("check_out_date"));
+                int dateDiff = result.getInt("bill");
              
-                String ArraytableData[] = {guestDetails.getUsername(),guestDetails.getLastName(),guestDetails.getId(),guestDetails.getNationality(),guestDetails.getPhoneNumber(),guestDetails.getEmail(),
+                Object ArraytableData[] = {guestDetails.getUsername(),guestDetails.getLastName(),guestDetails.getId(),guestDetails.getNationality(),guestDetails.getPhoneNumber(),guestDetails.getEmail(),
                                            guestDetails.getGender(), String.valueOf(room.getRoomNumber()),
                                            room.getRoomType(),
                                            String.valueOf(guestDetails.getCheck_in_date()),
-                                           String.valueOf(guestDetails.check_out_date)};
+                                           String.valueOf(guestDetails.check_out_date),
+                                           String.valueOf(dateDiff)};
                 
                 DefaultTableModel tableModel = (DefaultTableModel) tableData.getModel();
                 
@@ -88,7 +92,7 @@ Room room = new Room();
 
             },
             new String [] {
-                "First name", "Last name", "NIDA Identity", "Nationality", "Phone number", "Email", "Gender", "Room number", "Room type", "Check in date", "Check out date"
+                "First name", "Last name", "NIDA Identity", "Nationality", "Phone number", "Email", "Gender", "Room number", "Room type", "Check in date", "Check out date", "Bill"
             }
         ));
         jScrollPane1.setViewportView(tableData);
@@ -128,10 +132,10 @@ Room room = new Room();
                         .addComponent(btnLogOut))
                     .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(353, 353, 353)
                 .addComponent(jLabel1)
-                .addGap(359, 359, 359))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
