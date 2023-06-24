@@ -65,26 +65,7 @@ public class User{
         return id;
     }
     
-//    Encryption method
-    public String encryption(String password){
-        try {
-            MessageDigest md = MessageDigest.getInstance("SHA-256");
-            byte[] passwordBytes = password.getBytes();
-            byte[] hashBytes = md.digest(passwordBytes);
-            StringBuilder sb = new StringBuilder();
-            for(byte b: hashBytes){
-                sb.append(String.format("%02x", b));
-            }
-            
-            return sb.toString();
-        } catch (NoSuchAlgorithmException ex) {
-            Logger.getLogger(User.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        return null;
-
-}
-    
+ 
 //    login method that accept three parameters for username, password, and sql statement
     public boolean login(String username, String password, String sqlStatement){
         DBConnection conn = new DBConnection();
@@ -97,6 +78,7 @@ public class User{
                 String uname = result.getString("firstname");
                 String pwd = result.getString("password");
                 
+//                Comparison of data
                 if((username.equals(uname)) && (password.equals(pwd))){  
                   new RoomAssistanceDashboard().setVisible(true); 
                   return true;
@@ -114,6 +96,29 @@ public class User{
         }
         return false;
     }
+    
+    
+    //   ================= Encryption method =====================================
+    public String encryption(String password){
+        try {
+            MessageDigest md = MessageDigest.getInstance("SHA-256");
+            byte[] passwordBytes = password.getBytes();
+            byte[] hashBytes = md.digest(passwordBytes);
+            StringBuilder sb = new StringBuilder();
+            for(byte b: hashBytes){
+                sb.append(String.format("%02x", b));
+            }
+            
+            return sb.toString();
+        } catch (NoSuchAlgorithmException ex) {
+            Logger.getLogger(User.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return null;
+    }
+    
+//    =================== end of encryption method ==============================
+   
     
 }
 

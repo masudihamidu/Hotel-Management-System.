@@ -45,6 +45,7 @@ public class Employee extends User {
         return phoneNumber;
     }
     
+    
     public boolean register(String username, String lastname, String gender, String registrationNumber, String email, String phoneNumber, String password) throws SQLException{
         boolean registrationSuccess  = false;
         this.setUsername(username);
@@ -53,7 +54,7 @@ public class Employee extends User {
         this.setEmail(email);
         this.setId(registrationNumber);
         this.setPhoneNumber(phoneNumber);
-        this.setPassword(encryption(password));                         
+        this.setPassword(password);                         
 
         
 //    check username is empty    

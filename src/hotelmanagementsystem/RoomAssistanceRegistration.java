@@ -203,7 +203,7 @@ public class RoomAssistanceRegistration extends javax.swing.JFrame {
       Employee registrationDetails = new Employee(); //instance of registration class
   
         try {
-            registrationDetails.register(txtFirstName.getText(), txtLastName.getText(),(String) cmbGender.getSelectedItem(),txtRegistrationNumber.getText(), txtEmail.getText(),(String)cmbGender.getSelectedItem() , txtPhonenumber.getText());
+            registrationDetails.register(txtFirstName.getText(), txtLastName.getText(),(String) cmbGender.getSelectedItem(),txtRegistrationNumber.getText(), txtEmail.getText(),txtPhonenumber.getText(),txtPassword.getText() );
             this.setVisible(false);
         } catch (SQLException ex) {
             Logger.getLogger(RoomAssistanceRegistration.class.getName()).log(Level.SEVERE, null, ex);
